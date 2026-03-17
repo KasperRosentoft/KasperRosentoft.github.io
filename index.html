@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motion Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --accent: #b8ff3c;
+      --accent-dark: #8ecc1a;
+      --gray: #c8c5be;
+      --gray-light: #eceae4;
+      --text: #1a1a1a;
+      --nav-bg: rgba(245,243,238,0.92);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      height: 58px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--black);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 9px 22px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover { background: var(--accent-dark); transform: scale(1.03); }
+
+    /* ── PAGES ── */
+    .page { display: none; min-height: 100vh; }
+    .page.active { display: block; }
+
+    /* ── HOME ── */
+    #home {
+      padding-top: 58px;
+    }
+
+    .hero {
+      padding: 100px 60px 80px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gray-light);
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--black);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: #555;
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 24px;
+    }
+
+    .btn-showreel {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      cursor: pointer;
+      transition: gap 0.2s;
+    }
+
+    .btn-showreel:hover { gap: 16px; }
+
+    .play-icon {
+      width: 42px; height: 42px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .play-icon svg { margin-left: 2px; }
+
+    .hero-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, var(--black), transparent);
+      margin: 72px 0 72px;
+      max-width: 960px;
+      margin-left: auto; margin-right: auto;
+      padding: 0 60px;
+    }
+
+    /* ── CATEGORY GRID ── */
+    .categories {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 60px 120px;
+    }
+
+    .categories-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .category-card {
+      position: relative;
+      background: var(--gray-light);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+
+    .category-card:last-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card:hover .card-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .card-img-area {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 60px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .card-placeholder {
+      width: 140px; height: 140px;
+      background: linear-gradient(135deg, #ddd 0%, #c8c5be 100%);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .card-bottom {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--black);
+      line-height: 1.1;
+    }
+
+    .card-arrow {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(0,0,0,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .category-card:last-child .card-title { font-size: 36px; }
+
+    /* ── INNER PAGE SHARED ── */
+    .inner-page {
+      padding-top: 58px;
+    }
+
+    .page-hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 60px 60px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .page-hero-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .page-hero p {
+      font-size: 17px;
+      font-weight: 300;
+      color: #666;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 60px 120px;
+    }
+
+    .project-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .project-entry:last-child { border-bottom: none; }
+
+    .project-entry.reverse { direction: rtl; }
+    .project-entry.reverse > * { direction: ltr; }
+
+    .project-media {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--gray-light);
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      color: #aaa;
+      font-size: 13px;
+      position: relative;
+    }
+
+    .project-media-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #e2e0da 0%, #c8c5be 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .project-info { padding: 8px 0; }
+
+    .project-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #bbb;
+      margin-bottom: 16px;
+    }
+
+    .project-info h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .project-info p {
+      font-size: 15px;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,0,0,0.15);
+      color: #666;
+    }
+
+    /* ── FULL WIDTH PROJECT SECTION ── */
+    .project-full {
+      background: var(--black);
+      padding: 80px 60px;
+      margin: 0;
+    }
+
+    .project-full-inner {
+      max-width: 960px; margin: 0 auto;
+    }
+
+    .project-full-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .project-full h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--white);
+      margin-bottom: 48px;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/7;
+      background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      color: #444;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── HIRE PAGE ── */
+    #hire {
+      padding-top: 58px;
+    }
+
+    .hire-hero {
+      max-width: 960px; margin: 0 auto;
+      padding: 100px 60px 80px;
+    }
+
+    .hire-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .hire-hero h1 em { font-style: italic; }
+
+    .hire-hero p {
+      font-size: 17px; font-weight: 300; color: #666;
+      max-width: 500px; line-height: 1.7; margin-bottom: 48px;
+    }
+
+    .hire-form {
+      max-width: 600px;
+    }
+
+    .form-row { margin-bottom: 20px; }
+
+    .form-row label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .form-row input, .form-row textarea {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--gray-light);
+      border: 1.5px solid transparent;
+      border-radius: 10px;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-row input:focus, .form-row textarea:focus {
+      border-color: var(--black);
+    }
+
+    .form-row textarea { min-height: 140px; resize: vertical; }
+
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 16px 36px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover { background: #333; transform: scale(1.02); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 40px 60px;
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 2px; color: var(--black);
+    }
+
+    .footer-links {
+      display: flex; gap: 24px; list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 13px; color: #888; text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero, .page-hero, .categories, .projects-list, .hire-hero { padding-left: 24px; padding-right: 24px; }
+      .category-grid { grid-template-columns: 1fr; }
+      .category-card:last-child { grid-column: auto; aspect-ratio: 4/3; }
+      .project-entry { grid-template-columns: 1fr; gap: 28px; }
+      .project-entry.reverse { direction: ltr; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" onclick="showPage('home')">YourName</a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+      <li><a onclick="showPage('music')" data-page="music">Music visuals</a></li>
+      <li><a onclick="showPage('vfx')" data-page="vfx">VFX</a></li>
+      <li><a onclick="showPage('motion')" data-page="motion">Motion Design</a></li>
+    </ul>
+    <a class="nav-cta" onclick="showPage('hire')">Hire me!</a>
+  </nav>
+
+  <!-- ═══ HOME ═══ -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div class="hero-tag">Motion & Visual Artist</div>
+      <h1>Welcome to<br>my <em>portfolio</em></h1>
+      <p class="hero-sub">I craft immersive motion experiences — from music visuals and VFX to full motion design systems. Every frame is a chance to tell something new.</p>
+      <div class="hero-actions">
+        <a class="btn-showreel" href="#" target="_blank">
+          <span class="play-icon">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+              <path d="M1 1L11 7L1 13V1Z" fill="white"/>
+            </svg>
+          </span>
+          Watch showreel
+        </a>
+      </div>
+    </section>
+
+    <div style="max-width:960px;margin:0 auto;padding:0 60px;">
+      <hr style="border:none;border-top:1px solid rgba(0,0,0,0.1);">
+    </div>
+
+    <section class="categories reveal">
+      <p class="categories-label">Work categories</p>
+      <div class="category-grid">
+        <div class="category-card" onclick="showPage('music')">
+          <div class="card-img-area">
+            <div class="card-placeholder">[ image ]</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-title">Music<br>visuals</span>
+            <span class="card-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="category-card" onclick="showPage('vfx')">
+          <div class="card-img-area">
+            <div class="card-placeholder">[ image ]</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-title">VFX</span>
+            <span class="card-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="category-card" onclick="showPage('motion')">
+          <div class="card-img-area">
+            <div class="card-placeholder">[ image ]</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-title">Motion Design</span>
+            <span class="card-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-name">YourName</span>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ═══ MUSIC VISUALS ═══ -->
+  <div id="music" class="page inner-page">
+    <div class="page-hero">
+      <p class="page-hero-label">Category — 01</p>
+      <h1>Music visuals</h1>
+      <p>Working alongside musicians to build visual worlds for their sound is one of the most expressive and experimental spaces I get to inhabit. Every project is its own universe.</p>
+    </div>
+
+    <div class="projects-list">
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">01</p>
+          <h2>kingtommi — Merlins</h2>
+          <p>This project called for animated sequences steeped in high fantasy — drawing deep from the visual language of Lord of the Rings and Game of Thrones to build a world that felt ancient and mythic.</p>
+          <p>All shots were created in Blender using the Eevee render engine, allowing for real-time shading and dramatic atmospheric lighting throughout.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">Eevee</span>
+            <span class="tag">3D Animation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">02</p>
+          <h2>Neon Priest — Forever</h2>
+          <p>A project built around contrast and neon-drenched atmosphere. The brief was to create visuals that sat between industrial darkness and vivid, almost euphoric color — a tension that lives in the music itself.</p>
+          <p>Motion design and compositing were handled in After Effects, with 3D elements rendered in Cinema 4D.</p>
+          <div class="project-tags">
+            <span class="tag">After Effects</span>
+            <span class="tag">Cinema 4D</span>
+            <span class="tag">Compositing</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="project-full">
+      <div class="project-full-inner">
+        <p class="project-full-label">03 — Gallery project</p>
+        <h2>Roskilde Festival EOS</h2>
+        <div class="project-gallery">
+          <div class="gallery-item">[ image — candles scene ]</div>
+          <div class="gallery-item">[ image — sword &amp; book ]</div>
+          <div class="gallery-item">[ image — crown ]</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-name">YourName</span>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ═══ VFX ═══ -->
+  <div id="vfx" class="page inner-page">
+    <div class="page-hero">
+      <p class="page-hero-label">Category — 02</p>
+      <h1>VFX</h1>
+      <p>Visual effects work that integrates seamlessly with live footage and original content. From particle simulations to compositing and environment extension — built to hold up at any scale.</p>
+    </div>
+
+    <div class="projects-list">
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">01</p>
+          <h2>Project Title Here</h2>
+          <p>A brief description of this VFX project goes here. Describe the brief, the challenge, and what made this piece interesting to work on. Keep it direct and specific.</p>
+          <p>Technical notes on tools, render pipeline, or techniques used in the production of this piece.</p>
+          <div class="project-tags">
+            <span class="tag">Nuke</span>
+            <span class="tag">Blender</span>
+            <span class="tag">Tracking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">02</p>
+          <h2>Project Title Here</h2>
+          <p>A brief description of this VFX project goes here. Describe the brief, the challenge, and what made this piece interesting to work on. Keep it direct and specific.</p>
+          <p>Technical notes on tools, render pipeline, or techniques used in the production of this piece.</p>
+          <div class="project-tags">
+            <span class="tag">After Effects</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">Compositing</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span class="footer-name">YourName</span>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ═══ MOTION DESIGN ═══ -->
+  <div id="motion" class="page inner-page">
+    <div class="page-hero">
+      <p class="page-hero-label">Category — 03</p>
+      <h1>Motion Design</h1>
+      <p>Motion design lives at the intersection of graphic design, animation, and narrative. These are projects where the movement itself carries the message — from title sequences to brand identity in motion.</p>
+    </div>
+
+    <div class="projects-list">
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">01</p>
+          <h2>Project Title Here</h2>
+          <p>A concise description of this motion design project. What was the concept, who was the client, and what did the final piece achieve? Ground it in specifics.</p>
+          <p>Describe the process: storyboarding, style frames, toolchain, and any interesting production challenges that shaped the outcome.</p>
+          <div class="project-tags">
+            <span class="tag">After Effects</span>
+            <span class="tag">Illustrator</span>
+            <span class="tag">Title Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">Project image</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">02</p>
+          <h2>Project Title Here</h2>
+          <p>A concise description of this motion design project. What was the concept, who was the client, and what did the final piece achieve? Ground it in specifics.</p>
+          <p>Describe the process: storyboarding, style frames, toolchain, and any interesting production challenges that shaped the outcome.</p>
+          <div class="project-tags">
+            <span class="tag">Cinema 4D</span>
+            <span class="tag">Redshift</span>
+            <span class="tag">Brand Motion</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span class="footer-name">YourName</span>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ═══ HIRE ═══ -->
+  <div id="hire" class="page">
+    <div class="hire-hero">
+      <h1>Let's make<br>something <em>great.</em></h1>
+      <p>Available for freelance projects, collaborations, and long-term creative partnerships. Get in touch and let's talk about what you're building.</p>
+
+      <form class="hire-form" onsubmit="return false;">
+        <div class="form-row">
+          <label>Your name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" placeholder="jane@studio.com">
+        </div>
+        <div class="form-row">
+          <label>What are you working on?</label>
+          <textarea placeholder="Tell me about your project — the medium, the scale, the timeline…"></textarea>
+        </div>
+        <button class="btn-submit" type="submit">
+          Send message
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <footer>
+      <span class="footer-name">YourName</span>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === id);
+      });
+      window.scrollTo({ top: 0 });
+      // Trigger reveals
+      setTimeout(triggerReveals, 80);
+    }
+
+    function triggerReveals() {
+      const els = document.querySelectorAll('.page.active .reveal');
+      els.forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 120);
+      });
+    }
+
+    // Scroll-based reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Initial reveal for home
+    setTimeout(triggerReveals, 200);
+  </script>
+</body>
+</html>
