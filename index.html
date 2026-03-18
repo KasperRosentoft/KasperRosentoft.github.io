@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motion Portfolio</title>
+  <title>Kasper Rosentoft — Motion & Visual Artist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     }
 
     html { scroll-behavior: smooth; }
-    
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--white);
@@ -500,7 +500,88 @@
 
     .btn-submit:hover { background: #333; transform: scale(1.02); }
 
-    /* ── FOOTER ── */
+    /* ── TIMELINE ── */
+    .timeline-section {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 60px 100px;
+    }
+
+    .timeline-label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #888;
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 1.5px solid rgba(0,0,0,0.1);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+      padding-left: 24px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -35px; top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--black);
+    }
+
+    .timeline-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px; letter-spacing: 0.15em;
+      color: #aaa; margin-bottom: 4px;
+    }
+
+    .timeline-place {
+      font-size: 15px; font-weight: 500;
+      color: var(--black); margin-bottom: 3px;
+    }
+
+    .timeline-desc {
+      font-size: 14px; font-weight: 300;
+      color: #777; line-height: 1.5;
+    }
+
+    /* ── VIDEO EMBED ── */
+    .video-embed {
+      position: relative; width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 12px; overflow: hidden;
+      background: #111;
+    }
+
+    .video-embed iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: none;
+    }
+
+    .video-local {
+      width: 100%; border-radius: 12px;
+      overflow: hidden; background: #111;
+      display: block;
+    }
+
+    .video-local video {
+      width: 100%; display: block;
+    }
+
+    /* ── SHOWREEL EMBED ── */
+    .showreel-embed {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 60px 60px;
+    }
+
+    .showreel-embed .video-embed {
+      border-radius: 16px;
+    }
     footer {
       border-top: 1px solid rgba(0,0,0,0.08);
       padding: 40px 60px;
@@ -536,7 +617,49 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── EXPERIMENTS GRID ── */
+    .experiments-grid {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 60px 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .experiment-card {
+      border-radius: 14px; overflow: hidden;
+      background: var(--gray-light);
+    }
+
+    .experiment-media {
+      width: 100%; aspect-ratio: 16/9;
+      background: #ddd; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .experiment-media video,
+    .experiment-media img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .experiment-info { padding: 20px 22px 24px; }
+
+    .experiment-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px; margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .experiment-info p {
+      font-size: 13px; font-weight: 300;
+      color: #777; line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .experiments-grid { grid-template-columns: 1fr; padding: 0 24px 80px; }
+      .timeline-section { padding-left: 24px; padding-right: 24px; }
+      .showreel-embed { padding-left: 24px; padding-right: 24px; }
+    }
     @media (max-width: 700px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -553,12 +676,12 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" onclick="showPage('home')">YourName</a>
+    <a class="nav-logo" onclick="showPage('home')">Kasper Rosentoft</a>
     <ul class="nav-links">
       <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
       <li><a onclick="showPage('music')" data-page="music">Music visuals</a></li>
-      <li><a onclick="showPage('vfx')" data-page="vfx">VFX</a></li>
       <li><a onclick="showPage('motion')" data-page="motion">Motion Design</a></li>
+      <li><a onclick="showPage('experiments')" data-page="experiments">Experiments</a></li>
     </ul>
     <a class="nav-cta" onclick="showPage('hire')">Hire me!</a>
   </nav>
@@ -568,9 +691,9 @@
     <section class="hero">
       <div class="hero-tag">Motion & Visual Artist</div>
       <h1>Welcome to<br>my <em>portfolio</em></h1>
-      <p class="hero-sub">I craft immersive motion experiences — from music visuals and VFX to full motion design systems. Every frame is a chance to tell something new.</p>
+      <p class="hero-sub">I make motion design, music visuals, VFX and a lot of other stuff. I'm drawn to projects where the craft is pushed somewhere unfamiliar — whether that's animating a fantasy world for a musician or rigging characters from scratch in After Effects.</p>
       <div class="hero-actions">
-        <a class="btn-showreel" href="#" target="_blank">
+        <a class="btn-showreel" href="https://vimeo.com/1037344990" target="_blank">
           <span class="play-icon">
             <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
               <path d="M1 1L11 7L1 13V1Z" fill="white"/>
@@ -578,6 +701,12 @@
           </span>
           Watch showreel
         </a>
+      </div>
+    </section>
+
+    <section class="showreel-embed reveal">
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1037344990?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
       </div>
     </section>
 
@@ -602,12 +731,12 @@
           </div>
         </div>
 
-        <div class="category-card" onclick="showPage('vfx')">
+        <div class="category-card" onclick="showPage('motion')">
           <div class="card-img-area">
             <div class="card-placeholder">[ image ]</div>
           </div>
           <div class="card-bottom">
-            <span class="card-title">VFX</span>
+            <span class="card-title">Motion<br>Design</span>
             <span class="card-arrow">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
@@ -616,12 +745,12 @@
           </div>
         </div>
 
-        <div class="category-card" onclick="showPage('motion')">
+        <div class="category-card" onclick="showPage('experiments')">
           <div class="card-img-area">
             <div class="card-placeholder">[ image ]</div>
           </div>
           <div class="card-bottom">
-            <span class="card-title">Motion Design</span>
+            <span class="card-title">Experiments</span>
             <span class="card-arrow">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
@@ -632,16 +761,46 @@
       </div>
     </section>
 
+    <section class="timeline-section reveal">
+      <p class="timeline-label">Experience & Education</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-year">2024</p>
+          <p class="timeline-place">Freelance Motion Designer</p>
+          <p class="timeline-desc">Working independently with musicians, studios and brands on motion and VFX projects</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2022</p>
+          <p class="timeline-place">Studio Name</p>
+          <p class="timeline-desc">Job title — brief one-line description of what you did there</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2020</p>
+          <p class="timeline-place">Another Studio</p>
+          <p class="timeline-desc">Job title — brief one-line description</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2019</p>
+          <p class="timeline-place">Your School / University</p>
+          <p class="timeline-desc">Degree or course name</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2017</p>
+          <p class="timeline-place">Another School</p>
+          <p class="timeline-desc">Degree or course name</p>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <span class="footer-name">YourName</span>
+      <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Vimeo</a></li>
-        <li><a href="#">LinkedIn</a></li>
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
+        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
-
   <!-- ═══ MUSIC VISUALS ═══ -->
   <div id="music" class="page inner-page">
     <div class="page-hero">
@@ -654,102 +813,54 @@
 
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
+          <div class="video-embed">
+            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+          </div>
         </div>
         <div class="project-info">
           <p class="project-number">01</p>
           <h2>kingtommi — Merlins</h2>
-          <p>This project called for animated sequences steeped in high fantasy — drawing deep from the visual language of Lord of the Rings and Game of Thrones to build a world that felt ancient and mythic.</p>
-          <p>All shots were created in Blender using the Eevee render engine, allowing for real-time shading and dramatic atmospheric lighting throughout.</p>
+          <p>This project needed animated sequences for the intro where an old book tells the origin story of the song's protagonist and introduces the villain of the music video. When the characters travel, we made Lord of the Rings-esque map sequences to better merge different locations.</p>
+          <p>The shots were created in Blender, incorporating grease pencil for the hand-drawn illustration sequences.</p>
           <div class="project-tags">
             <span class="tag">Blender</span>
             <span class="tag">Eevee</span>
-            <span class="tag">3D Animation</span>
+            <span class="tag">Grease Pencil</span>
           </div>
         </div>
       </div>
 
       <div class="project-entry reverse reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
+          <div class="video-local">
+            <video controls playsinline>
+              <source src="portfolio-assets/music/neonpriest/FINAL Promovideo 9_16.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
         <div class="project-info">
           <p class="project-number">02</p>
           <h2>Neon Priest — Forever</h2>
-          <p>A project built around contrast and neon-drenched atmosphere. The brief was to create visuals that sat between industrial darkness and vivid, almost euphoric color — a tension that lives in the music itself.</p>
-          <p>Motion design and compositing were handled in After Effects, with 3D elements rendered in Cinema 4D.</p>
+          <p>The band Neon Priest wanted to create a promo video for social media for their new song "Forever".</p>
+          <p>The shots were created in Blender and were a great exercise in making controlled chaos with different simulations and dynamic camera angles.</p>
           <div class="project-tags">
-            <span class="tag">After Effects</span>
-            <span class="tag">Cinema 4D</span>
-            <span class="tag">Compositing</span>
+            <span class="tag">Blender</span>
+            <span class="tag">Eevee</span>
+            <span class="tag">Simulation</span>
           </div>
         </div>
       </div>
-
-    </div>
-
-    <div class="project-full">
-      <div class="project-full-inner">
-        <p class="project-full-label">03 — Gallery project</p>
-        <h2>Roskilde Festival EOS</h2>
-        <div class="project-gallery">
-          <div class="gallery-item">[ image — candles scene ]</div>
-          <div class="gallery-item">[ image — sword &amp; book ]</div>
-          <div class="gallery-item">[ image — crown ]</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <span class="footer-name">YourName</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Vimeo</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </footer>
-  </div>
-
-  <!-- ═══ VFX ═══ -->
-  <div id="vfx" class="page inner-page">
-    <div class="page-hero">
-      <p class="page-hero-label">Category — 02</p>
-      <h1>VFX</h1>
-      <p>Visual effects work that integrates seamlessly with live footage and original content. From particle simulations to compositing and environment extension — built to hold up at any scale.</p>
-    </div>
-
-    <div class="projects-list">
 
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
+          <div class="project-media-placeholder">[ Coming soon ]</div>
         </div>
         <div class="project-info">
-          <p class="project-number">01</p>
-          <h2>Project Title Here</h2>
-          <p>A brief description of this VFX project goes here. Describe the brief, the challenge, and what made this piece interesting to work on. Keep it direct and specific.</p>
-          <p>Technical notes on tools, render pipeline, or techniques used in the production of this piece.</p>
+          <p class="project-number">03</p>
+          <h2>ungklang</h2>
+          <p>Project description coming soon.</p>
           <div class="project-tags">
-            <span class="tag">Nuke</span>
-            <span class="tag">Blender</span>
-            <span class="tag">Tracking</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-entry reverse reveal">
-        <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
-        </div>
-        <div class="project-info">
-          <p class="project-number">02</p>
-          <h2>Project Title Here</h2>
-          <p>A brief description of this VFX project goes here. Describe the brief, the challenge, and what made this piece interesting to work on. Keep it direct and specific.</p>
-          <p>Technical notes on tools, render pipeline, or techniques used in the production of this piece.</p>
-          <div class="project-tags">
-            <span class="tag">After Effects</span>
-            <span class="tag">Simulation</span>
-            <span class="tag">Compositing</span>
+            <span class="tag">TBD</span>
           </div>
         </div>
       </div>
@@ -757,11 +868,11 @@
     </div>
 
     <footer>
-      <span class="footer-name">YourName</span>
+      <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Vimeo</a></li>
-        <li><a href="#">LinkedIn</a></li>
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
+        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
@@ -769,43 +880,42 @@
   <!-- ═══ MOTION DESIGN ═══ -->
   <div id="motion" class="page inner-page">
     <div class="page-hero">
-      <p class="page-hero-label">Category — 03</p>
+      <p class="page-hero-label">Category — 02</p>
       <h1>Motion Design</h1>
-      <p>Motion design lives at the intersection of graphic design, animation, and narrative. These are projects where the movement itself carries the message — from title sequences to brand identity in motion.</p>
+      <p>Motion design lives at the intersection of graphic design, animation, and narrative. These are projects where the movement itself carries the message — from brand identity to digital products.</p>
     </div>
 
     <div class="projects-list">
 
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
+          <div class="video-embed">
+            <iframe src="https://player.vimeo.com/video/1174698428?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+          </div>
         </div>
         <div class="project-info">
           <p class="project-number">01</p>
-          <h2>Project Title Here</h2>
-          <p>A concise description of this motion design project. What was the concept, who was the client, and what did the final piece achieve? Ground it in specifics.</p>
-          <p>Describe the process: storyboarding, style frames, toolchain, and any interesting production challenges that shaped the outcome.</p>
+          <h2>DoorDing</h2>
+          <p>This project was made for DoorDing to illustrate their concept of making digital doorbells that let you control them from your phone.</p>
+          <p>It was my first attempt at properly making characters in After Effects and animating them with rigs — a challenge that pushed my character animation skills significantly.</p>
           <div class="project-tags">
             <span class="tag">After Effects</span>
             <span class="tag">Illustrator</span>
-            <span class="tag">Title Design</span>
+            <span class="tag">Character Rigging</span>
           </div>
         </div>
       </div>
 
       <div class="project-entry reverse reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">Project image</div>
+          <div class="project-media-placeholder">[ Coming soon ]</div>
         </div>
         <div class="project-info">
           <p class="project-number">02</p>
-          <h2>Project Title Here</h2>
-          <p>A concise description of this motion design project. What was the concept, who was the client, and what did the final piece achieve? Ground it in specifics.</p>
-          <p>Describe the process: storyboarding, style frames, toolchain, and any interesting production challenges that shaped the outcome.</p>
+          <h2>While In Battle I Am Free</h2>
+          <p>Project description coming soon.</p>
           <div class="project-tags">
-            <span class="tag">Cinema 4D</span>
-            <span class="tag">Redshift</span>
-            <span class="tag">Brand Motion</span>
+            <span class="tag">TBD</span>
           </div>
         </div>
       </div>
@@ -813,11 +923,63 @@
     </div>
 
     <footer>
-      <span class="footer-name">YourName</span>
+      <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Vimeo</a></li>
-        <li><a href="#">LinkedIn</a></li>
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
+        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+  <div id="experiments" class="page inner-page">
+    <div class="page-hero">
+      <p class="page-hero-label">Category — 03</p>
+      <h1>Experiments</h1>
+      <p>Personal work, tests, and technical explorations. No briefs, no clients — just curiosity. This is where new techniques get tried and ideas get stress-tested.</p>
+    </div>
+
+    <div class="experiments-grid reveal">
+
+      <div class="experiment-card">
+        <div class="experiment-media">
+          <img src="portfolio-assets/experiments/geometryNodes/hallway.gif" alt="Hallway geometry nodes experiment">
+        </div>
+        <div class="experiment-info">
+          <h3>Geometry Nodes — Hallway</h3>
+          <p>Procedural environment generation using Blender geometry nodes.</p>
+        </div>
+      </div>
+
+      <div class="experiment-card">
+        <div class="experiment-media">
+          <img src="portfolio-assets/experiments/geometryNodes/stairPlatform-GIF" alt="Stair platform experiment">
+        </div>
+        <div class="experiment-info">
+          <h3>Geometry Nodes — Stairs</h3>
+          <p>Exploring procedural stair generation and platform dynamics in Blender.</p>
+        </div>
+      </div>
+
+      <div class="experiment-card">
+        <div class="experiment-media">
+          <video autoplay loop muted playsinline>
+            <source src="portfolio-assets/experiments/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="experiment-info">
+          <h3>Trashcan Robot — Walk Cycle</h3>
+          <p>Character animation exercise — rigging and walk cycle for an original character.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span class="footer-name">Kasper Rosentoft</span>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
+        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
@@ -851,11 +1013,11 @@
     </div>
 
     <footer>
-      <span class="footer-name">YourName</span>
+      <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Vimeo</a></li>
-        <li><a href="#">LinkedIn</a></li>
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
+        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
