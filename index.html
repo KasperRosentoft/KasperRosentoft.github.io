@@ -617,7 +617,63 @@
       transform: translateY(0);
     }
 
-    /* ── EXPERIMENTS GRID ── */
+    /* ── EXPERIMENT TABS ── */
+    .exp-tabs-wrap {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 60px 40px;
+    }
+
+    .exp-tabs {
+      display: inline-flex;
+      background: var(--gray-light);
+      border-radius: 100px;
+      padding: 4px;
+      gap: 2px;
+    }
+
+    .exp-tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 8px 22px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      color: #888;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .exp-tab.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .exp-tab:hover:not(.active) { color: var(--black); }
+
+    .exp-panel { display: none; }
+    .exp-panel.active { display: grid; }
+
+    .exp-coming-soon {
+      grid-column: 1 / -1;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .exp-coming-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px; letter-spacing: 0.2em;
+      color: #bbb; margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .exp-coming-soon p:last-child {
+      font-size: 15px; font-weight: 300; color: #999;
+    }
+
+    @media (max-width: 700px) {
+      .exp-tabs-wrap { padding-left: 24px; padding-right: 24px; }
+    }
     .experiments-grid {
       max-width: 960px; margin: 0 auto;
       padding: 0 60px 120px;
@@ -938,11 +994,20 @@
       <p>Personal work, tests, and technical explorations. No briefs, no clients — just curiosity. This is where new techniques get tried and ideas get stress-tested.</p>
     </div>
 
-    <div class="experiments-grid reveal">
+    <!-- Filter tabs -->
+    <div class="exp-tabs-wrap">
+      <div class="exp-tabs">
+        <button class="exp-tab active" onclick="switchTab('blender')">Blender</button>
+        <button class="exp-tab" onclick="switchTab('rive')">Rive</button>
+        <button class="exp-tab" onclick="switchTab('touchdesigner')">TouchDesigner</button>
+      </div>
+    </div>
 
+    <!-- Blender -->
+    <div class="exp-panel active experiments-grid reveal" id="tab-blender">
       <div class="experiment-card">
         <div class="experiment-media">
-          <img src="portfolio-assets/experiments/geometryNodes/hallway.gif" alt="Hallway geometry nodes experiment">
+          <img src="portfolio-assets/experiments/blender/geometryNodes/hallway.gif" alt="Hallway geometry nodes">
         </div>
         <div class="experiment-info">
           <h3>Geometry Nodes — Hallway</h3>
@@ -952,18 +1017,28 @@
 
       <div class="experiment-card">
         <div class="experiment-media">
-          <img src="portfolio-assets/experiments/geometryNodes/stairPlatform-GIF" alt="Stair platform experiment">
+          <img src="portfolio-assets/experiments/blender/geometryNodes/fancyStairs_GIF.gif" alt="Fancy stairs geometry nodes">
         </div>
         <div class="experiment-info">
-          <h3>Geometry Nodes — Stairs</h3>
-          <p>Exploring procedural stair generation and platform dynamics in Blender.</p>
+          <h3>Geometry Nodes — Fancy Stairs</h3>
+          <p>Procedural stair generation with dynamic motion in Blender.</p>
+        </div>
+      </div>
+
+      <div class="experiment-card">
+        <div class="experiment-media">
+          <img src="portfolio-assets/experiments/blender/geometryNodes/stairPlatform-GIF.gif" alt="Stair platform geometry nodes">
+        </div>
+        <div class="experiment-info">
+          <h3>Geometry Nodes — Stair Platform</h3>
+          <p>Exploring procedural stair platform dynamics in Blender.</p>
         </div>
       </div>
 
       <div class="experiment-card">
         <div class="experiment-media">
           <video autoplay loop muted playsinline>
-            <source src="portfolio-assets/experiments/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
+            <source src="portfolio-assets/experiments/blender/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
           </video>
         </div>
         <div class="experiment-info">
@@ -971,7 +1046,22 @@
           <p>Character animation exercise — rigging and walk cycle for an original character.</p>
         </div>
       </div>
+    </div>
 
+    <!-- Rive -->
+    <div class="exp-panel experiments-grid" id="tab-rive">
+      <div class="exp-coming-soon">
+        <p class="exp-coming-label">Coming soon</p>
+        <p>Rive experiments are on the way.</p>
+      </div>
+    </div>
+
+    <!-- TouchDesigner -->
+    <div class="exp-panel experiments-grid" id="tab-touchdesigner">
+      <div class="exp-coming-soon">
+        <p class="exp-coming-label">Coming soon</p>
+        <p>TouchDesigner experiments are on the way.</p>
+      </div>
     </div>
 
     <footer>
@@ -1023,6 +1113,13 @@
   </div>
 
   <script>
+    function switchTab(id) {
+      document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
