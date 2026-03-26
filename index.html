@@ -886,6 +886,7 @@
       <li><a onclick="showPage('about')" data-page="about">About</a></li>
       <li><a onclick="showPage('music')" data-page="music">Music visuals</a></li>
       <li><a onclick="showPage('motion')" data-page="motion">Motion Design</a></li>
+      <li><a onclick="showPage('video')" data-page="video">Video</a></li>
       <li><a onclick="showPage('experiments')" data-page="experiments">Experiments</a></li>
     </ul>
     <a class="nav-cta" onclick="showPage('hire')">Get in touch</a>
@@ -957,6 +958,20 @@
             </span>
           </div>
         </div>
+
+        <div class="category-card" onclick="showPage('video')">
+          <div class="card-img-area">
+            <div class="card-placeholder">[ image ]</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-title">Video</span>
+            <span class="card-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -964,7 +979,6 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
@@ -979,8 +993,8 @@
         </div>
         <div class="about-text-col">
           <h1>Hi, I'm<br><em>Kasper.</em></h1>
-          <p>I make motion design, music visuals, VFX and a lot of other stuff. I'm drawn to projects where the craft is pushed somewhere unfamiliar — whether that's animating a fantasy world for a musician or rigging characters from scratch in After Effects.</p>
-          <p>Based in Denmark, I work independently with musicians, studios and brands. I care a lot about the technical side of things but even more about the feeling a piece of animation leaves you with.</p>
+          <p>I'm a motion designer with a deep interest in 3D and pushing software to its limits — especially Blender and its geometry nodes, which play a central role in both my personal and client work.</p>
+          <p>A lot of my spare time goes into exploring and developing my skills, which traces back to my background in music. The two worlds have merged in my work creating visuals for live performances, where what happens on stage and what happens on screen feed into each other and become something bigger.</p>
           <div class="about-socials">
             <a class="social-link" href="https://instagram.com/yourhandle" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -1000,6 +1014,7 @@
                 <span class="skill-tag">After Effects</span>
                 <span class="skill-tag">TouchDesigner</span>
                 <span class="skill-tag">DaVinci Resolve</span>
+                <span class="skill-tag">Figma</span>
               </div>
             </div>
             <div class="skills-group">
@@ -1019,29 +1034,24 @@
         <p class="timeline-label">Experience & Education</p>
         <div class="timeline">
           <div class="timeline-item">
-            <p class="timeline-year">2024</p>
-            <p class="timeline-place">Freelance Motion Designer</p>
-            <p class="timeline-desc">Working independently with musicians, studios and brands on motion and VFX projects</p>
+            <p class="timeline-year">2025 — 2026</p>
+            <p class="timeline-place">Skjaldborn — Internship</p>
+            <p class="timeline-desc">Making animation in 2D as well as 3D</p>
           </div>
           <div class="timeline-item">
-            <p class="timeline-year">2022</p>
-            <p class="timeline-place">Studio Name</p>
-            <p class="timeline-desc">Job title — brief one-line description of what you did there</p>
+            <p class="timeline-year">2023 — 2026</p>
+            <p class="timeline-place">DMJX — Interactive Design</p>
+            <p class="timeline-desc">Bachelor's programme in interactive design</p>
           </div>
           <div class="timeline-item">
-            <p class="timeline-year">2020</p>
-            <p class="timeline-place">Another Studio</p>
-            <p class="timeline-desc">Job title — brief one-line description</p>
+            <p class="timeline-year">2020 — 2023</p>
+            <p class="timeline-place">Subview — Internship</p>
+            <p class="timeline-desc">Videographer, Motion Designer and VFX artist</p>
           </div>
           <div class="timeline-item">
-            <p class="timeline-year">2019</p>
-            <p class="timeline-place">Your School / University</p>
-            <p class="timeline-desc">Degree or course name</p>
-          </div>
-          <div class="timeline-item">
-            <p class="timeline-year">2017</p>
-            <p class="timeline-place">Another School</p>
-            <p class="timeline-desc">Degree or course name</p>
+            <p class="timeline-year">2019 — 2022</p>
+            <p class="timeline-place">NEXT — Film & TV-Production Technician</p>
+            <p class="timeline-desc">Studied film and TV production</p>
           </div>
         </div>
       </section>
@@ -1052,7 +1062,6 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
@@ -1091,7 +1100,7 @@
         <div class="project-media">
           <div class="video-local">
             <video controls playsinline>
-              <source src="portfolio-assets/music/neonpriest/FINAL Promovideo 9_16.mp4" type="video/mp4">
+              <source src="portfolio-assets/musicVisuals/neonpriest/FINAL Promovideo 9_16.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -1114,10 +1123,13 @@
         </div>
         <div class="project-info">
           <p class="project-number">03</p>
-          <h2>ungklang</h2>
-          <p>Project description coming soon.</p>
+          <h2>Ungklang — Roskilde Festival</h2>
+          <p>The choir group Ungklang wanted to create a promo video for social media for their performance at Roskilde Festival.</p>
+          <p>The shots were created using Blender and TouchDesigner — a great exercise in making controlled chaos with simulations that respond to input from a MIDI-controller and sound from the stage.</p>
           <div class="project-tags">
-            <span class="tag">TBD</span>
+            <span class="tag">Blender</span>
+            <span class="tag">TouchDesigner</span>
+            <span class="tag">MIDI</span>
           </div>
         </div>
       </div>
@@ -1128,7 +1140,6 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
@@ -1154,7 +1165,7 @@
           <p class="project-number">01</p>
           <h2>DoorDing</h2>
           <p>This project was made for DoorDing to illustrate their concept of making digital doorbells that let you control them from your phone.</p>
-          <p>It was my first attempt at properly making characters in After Effects and animating them with rigs — a challenge that pushed my character animation skills significantly.</p>
+          <p>It was my first attempt at properly making characters in After Effects and animating them with rigs.</p>
           <div class="project-tags">
             <span class="tag">After Effects</span>
             <span class="tag">Illustrator</span>
@@ -1165,14 +1176,34 @@
 
       <div class="project-entry reverse reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">[ Coming soon ]</div>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/VFg1maUY-zU" allowfullscreen allow="autoplay"></iframe>
+          </div>
         </div>
         <div class="project-info">
           <p class="project-number">02</p>
-          <h2>While In Battle I Am Free</h2>
-          <p>Project description coming soon.</p>
+          <h2>Iværksætterpuljen</h2>
+          <p>This project was made for Erhvervshus Sjælland to showcase how small businesses can apply for funding with a step-by-step guide.</p>
+          <p>A further exercise in character animation and rigging in After Effects, pushing the complexity of the rig further than the DoorDing project.</p>
           <div class="project-tags">
-            <span class="tag">TBD</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">Illustrator</span>
+            <span class="tag">Character Rigging</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="project-media-placeholder">[ Coming soon ]</div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">03</p>
+          <h2>While In Battle I Am Free</h2>
+          <p>Promotion video for a dance performance. Description and video coming soon.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">Eevee</span>
           </div>
         </div>
       </div>
@@ -1183,7 +1214,64 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
+        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ═══ VIDEO ═══ -->
+  <div id="video" class="page inner-page">
+    <div class="page-hero">
+      <p class="page-hero-label">Category — 03</p>
+      <h1>Video</h1>
+      <p>Cinematography, editing and video production — from brand portraits to tutorial content. Projects where the story lives in the footage itself.</p>
+    </div>
+
+    <div class="projects-list">
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/2RKnL57OdVY" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">01</p>
+          <h2>Tales of Alethrion — Board Game Tutorial</h2>
+          <p>Skjaldborn wanted to create a video tutorial for their board game based on their web-series Tales of Alethrion. As a fan of the universe and board games in general, this was an awesome project to work on.</p>
+          <p>I had a lot of fun making the game assets in 3D and illustrating the rules with animations.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">3D Animation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/ZXLBfVvkAMg" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">02</p>
+          <h2>Vejrhøj Vingaard</h2>
+          <p>This project was made as part of the Film and TV-production technician education at NEXT.</p>
+          <p>We made a portrait of the Danish wine farm located on the eastern part of Sjælland, staying true to their brand by being playful with the editing and the shots we captured.</p>
+          <div class="project-tags">
+            <span class="tag">DaVinci Resolve</span>
+            <span class="tag">Cinematography</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span class="footer-name">Kasper Rosentoft</span>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
@@ -1269,16 +1357,15 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
 
-  <!-- ═══ HIRE ═══ -->
+  <!-- ═══ GET IN TOUCH ═══ -->
   <div id="hire" class="page">
     <div class="hire-hero">
-      <h1>Let's make<br>something <em>great.</em></h1>
+      <h1>Let's make<br>something <em>meaningful.</em></h1>
       <p>Available for freelance projects, collaborations, and long-term creative partnerships. Get in touch and let's talk about what you're building.</p>
 
       <form class="hire-form" onsubmit="return false;">
@@ -1307,7 +1394,6 @@
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
         <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://vimeo.com/yourhandle" target="_blank">Vimeo</a></li>
         <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>

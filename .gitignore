@@ -1,3 +1,4 @@
 .DS_Store
 portfolio-assets/**/*.mp4
 portfolio-assets/**/*.mov
+!portfolio-assets/experiments/**/*.mp4
