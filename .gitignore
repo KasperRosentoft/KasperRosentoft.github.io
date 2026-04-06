@@ -2,3 +2,4 @@
 portfolio-assets/**/*.mp4
 portfolio-assets/**/*.mov
 !portfolio-assets/experiments/**/*.mp4
+!portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/*.mp4

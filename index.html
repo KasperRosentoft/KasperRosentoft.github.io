@@ -628,7 +628,57 @@
       transform: translateY(0);
     }
 
-    /* ── EXPERIMENT TABS ── */
+    /* ── CLIP GRID ── */
+    .clip-grid-section {
+      background: var(--black);
+      padding: 60px;
+      margin-top: 0;
+    }
+
+    .clip-grid-inner {
+      max-width: 960px; margin: 0 auto;
+    }
+
+    .clip-grid-label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #555;
+      margin-bottom: 8px;
+    }
+
+    .clip-grid-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .clip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .clip-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .clip-card video {
+      width: 100%; display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .clip-label {
+      font-size: 12px; font-weight: 400;
+      color: #666; padding: 10px 12px;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 700px) {
+      .clip-grid { grid-template-columns: 1fr 1fr; }
+      .clip-grid-section { padding: 40px 24px; }
+    }
     .exp-tabs-wrap {
       max-width: 960px; margin: 0 auto;
       padding: 0 60px 40px;
@@ -1250,7 +1300,7 @@
           <p class="project-number">01</p>
           <h2>Tales of Alethrion — Board Game Tutorial</h2>
           <p>Skjaldborn wanted to create a video tutorial for their board game based on their web-series Tales of Alethrion. As a fan of the universe and board games in general, this was an awesome project to work on.</p>
-          <p>I had a lot of fun making the game assets in 3D and illustrating the rules with animations.</p>
+          <p>The individual clips below show the animated segments I created for each rule section — each one built in Blender and composited in After Effects.</p>
           <div class="project-tags">
             <span class="tag">Blender</span>
             <span class="tag">After Effects</span>
@@ -1258,6 +1308,97 @@
           </div>
         </div>
       </div>
+
+    </div>
+
+    <div class="clip-grid-section reveal">
+      <div class="clip-grid-inner">
+        <p class="clip-grid-label">Tales of Alethrion — Animation clips</p>
+        <p class="clip-grid-title">Individual segments</p>
+        <div class="clip-grid">
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/acValue.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">AC Value</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/castingSpell.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Casting Spell</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/choosingAHero.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Choosing a Hero</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/gameBox.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Game Box</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/gameplayOverview.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Gameplay Overview</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/hitMissFumbleOrCriticalHit.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Hit, Miss, Fumble or Critical Hit</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/mapTiles.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Map Tiles</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/standardBattle.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Standard Battle</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/startingHeroes.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Starting Heroes</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/theGameStartsHere.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">The Game Starts Here</p>
+          </div>
+
+          <div class="clip-card">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/unfoldingTheMap.mp4" type="video/mp4">
+            </video>
+            <p class="clip-label">Unfolding the Map</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-list" style="padding-top: 80px;">
 
       <div class="project-entry reverse reveal">
         <div class="project-media">
