@@ -219,11 +219,6 @@
       will-change: transform;
     }
 
-    .category-card:last-child {
-      grid-column: 1 / -1;
-      aspect-ratio: 16/7;
-    }
-
     .category-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 32px rgba(0,0,0,0.1);
@@ -270,8 +265,6 @@
       transition: transform 150ms var(--ease-out-cubic);
       flex-shrink: 0;
     }
-
-    .category-card:last-child .card-title { font-size: 36px; }
 
     /* ── INNER PAGE SHARED ── */
     .inner-page {
@@ -777,20 +770,25 @@
 
     .exp-tab:hover:not(.active) { color: var(--black); }
 
+    .exp-panels-wrap {
+      position: relative;
+      min-height: 200px;
+    }
+
     .exp-panel {
+      display: none;
       opacity: 0;
       transform: translateY(8px);
-      transition: opacity 200ms var(--ease-out-cubic), transform 200ms var(--ease-out-cubic);
-      pointer-events: none;
-      position: absolute;
-      width: 100%;
     }
 
     .exp-panel.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-      position: relative;
+      display: grid;
+      animation: panelIn 200ms var(--ease-out-cubic) forwards;
+    }
+
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .exp-coming-soon {
@@ -808,11 +806,6 @@
 
     .exp-coming-soon p:last-child {
       font-size: 15px; font-weight: 300; color: #999;
-    }
-
-    /* wrap panels in a relative container so absolute positioning works */
-    .exp-panels-wrap {
-      position: relative;
     }
 
     @media (max-width: 700px) {
