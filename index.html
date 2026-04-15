@@ -20,6 +20,18 @@
       --gray-light: #eceae4;
       --text: #1a1a1a;
       --nav-bg: rgba(245,243,238,0.92);
+      --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+      --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+      --ease-out-cubic: cubic-bezier(.33, 1, .68, 1);
+      --ease-in-cubic: cubic-bezier(.32, 0, .67, 0);
+      --ease-out-back: cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     html { scroll-behavior: smooth; }
@@ -82,7 +94,7 @@
       text-decoration: none;
     }
 
-    .nav-cta:hover { background: var(--accent-dark); transform: scale(1.03); }
+    .nav-cta:hover { background: var(--accent-dark); transform: scale(1.03); transition: background 150ms ease, transform 150ms var(--ease-out-back); }
 
     /* ── PAGES ── */
     .page { display: none; min-height: 100vh; }
@@ -198,12 +210,13 @@
       border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      transition: transform 250ms var(--ease-out-quint), box-shadow 250ms var(--ease-out-quint);
       aspect-ratio: 4/3;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 28px;
+      will-change: transform;
     }
 
     .category-card:last-child {
@@ -213,6 +226,7 @@
 
     .category-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
 
     .category-card:hover .card-arrow {
@@ -253,7 +267,7 @@
       border: 1.5px solid rgba(0,0,0,0.2);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      transition: transform 0.2s;
+      transition: transform 150ms var(--ease-out-cubic);
       flex-shrink: 0;
     }
 
@@ -619,8 +633,9 @@
     /* ── SCROLL ANIMATIONS ── */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(24px);
+      transition: opacity 300ms var(--ease-out-cubic), transform 300ms var(--ease-out-cubic);
+      will-change: transform, opacity;
     }
 
     .reveal.visible {
@@ -690,6 +705,14 @@
     .clip-hidden { display: none; }
     .clip-hidden.visible { display: block; }
 
+    .clip-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #e2e0da 0%, #c8c5be 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #aaa;
+    }
+
     .clip-expand-btn {
       display: flex; align-items: center; gap: 8px;
       margin: 24px auto 0;
@@ -716,6 +739,11 @@
       .clip-grid { grid-template-columns: 1fr 1fr; }
       .clip-grid-section { padding: 0 24px 40px; }
     }
+    .page-hero--no-border {
+      border-bottom: none;
+      padding-bottom: 32px;
+    }
+
     .exp-tabs-wrap {
       max-width: 960px; margin: 0 auto;
       padding: 0 60px 40px;
@@ -739,7 +767,7 @@
       background: transparent;
       color: #888;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      transition: background 150ms ease, color 150ms ease;
     }
 
     .exp-tab.active {
@@ -749,8 +777,21 @@
 
     .exp-tab:hover:not(.active) { color: var(--black); }
 
-    .exp-panel { display: none; }
-    .exp-panel.active { display: grid; }
+    .exp-panel {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 200ms var(--ease-out-cubic), transform 200ms var(--ease-out-cubic);
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+    }
+
+    .exp-panel.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
 
     .exp-coming-soon {
       grid-column: 1 / -1;
@@ -767,6 +808,11 @@
 
     .exp-coming-soon p:last-child {
       font-size: 15px; font-weight: 300; color: #999;
+    }
+
+    /* wrap panels in a relative container so absolute positioning works */
+    .exp-panels-wrap {
+      position: relative;
     }
 
     @media (max-width: 700px) {
@@ -820,12 +866,12 @@
       position: fixed; inset: 0; z-index: 999;
       background: rgba(0,0,0,0.96);
       align-items: center; justify-content: center;
-      animation: fadeIn 0.25s ease;
+      animation: fadeIn 200ms var(--ease-out-cubic) forwards;
     }
 
     .lightbox.open { display: flex; }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
     .lightbox-inner {
       position: relative;
@@ -920,7 +966,7 @@
       border: 1.5px solid rgba(0,0,0,0.15);
       padding: 9px 18px;
       border-radius: 100px;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
     }
 
     .social-link:hover {
@@ -1175,21 +1221,39 @@
 
     <div class="projects-list">
 
-      <div class="project-entry reveal">
-        <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+      <!-- kingtommi — self-contained with sequences -->
+      <div class="project-entry-toa reveal">
+        <div class="project-entry">
+          <div class="project-media">
+            <div class="project-media-placeholder">[ Video coming soon ]</div>
+          </div>
+          <div class="project-info">
+            <p class="project-number">01</p>
+            <h2>kingtommi — Merlins</h2>
+            <p>This project needed animated sequences for the intro where an old book tells the origin story of the song's protagonist and introduces the villain of the music video. When the characters travel, we made Lord of the Rings-esque map sequences to better merge different locations.</p>
+            <p>The shots were created in Blender, incorporating grease pencil for the hand-drawn illustration sequences shown below.</p>
+            <div class="project-tags">
+              <span class="tag">Blender</span>
+              <span class="tag">Eevee</span>
+              <span class="tag">Grease Pencil</span>
+            </div>
           </div>
         </div>
-        <div class="project-info">
-          <p class="project-number">01</p>
-          <h2>kingtommi — Merlins</h2>
-          <p>This project needed animated sequences for the intro where an old book tells the origin story of the song's protagonist and introduces the villain of the music video. When the characters travel, we made Lord of the Rings-esque map sequences to better merge different locations.</p>
-          <p>The shots were created in Blender, incorporating grease pencil for the hand-drawn illustration sequences.</p>
-          <div class="project-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">Eevee</span>
-            <span class="tag">Grease Pencil</span>
+        <div class="toa-clips">
+          <p class="clip-grid-label">Animated sequences</p>
+          <div class="clip-grid">
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 01 ]</div>
+              <p class="clip-label">Intro — Book sequence</p>
+            </div>
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 02 ]</div>
+              <p class="clip-label">Map sequence</p>
+            </div>
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 03 ]</div>
+              <p class="clip-label">Character intro</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1215,19 +1279,39 @@
         </div>
       </div>
 
-      <div class="project-entry reveal">
-        <div class="project-media">
-          <div class="project-media-placeholder">[ Coming soon ]</div>
+      <!-- ungklang — self-contained with sequences -->
+      <div class="project-entry-toa reveal">
+        <div class="project-entry">
+          <div class="project-media">
+            <div class="project-media-placeholder">[ Video coming soon ]</div>
+          </div>
+          <div class="project-info">
+            <p class="project-number">03</p>
+            <h2>Ungklang — Roskilde Festival</h2>
+            <p>The choir group Ungklang wanted to create a promo video for social media for their performance at Roskilde Festival.</p>
+            <p>The shots were created using Blender and TouchDesigner — simulations that respond to input from a MIDI-controller and sound from the stage, shown in the sequences below.</p>
+            <div class="project-tags">
+              <span class="tag">Blender</span>
+              <span class="tag">TouchDesigner</span>
+              <span class="tag">MIDI</span>
+            </div>
+          </div>
         </div>
-        <div class="project-info">
-          <p class="project-number">03</p>
-          <h2>Ungklang — Roskilde Festival</h2>
-          <p>The choir group Ungklang wanted to create a promo video for social media for their performance at Roskilde Festival.</p>
-          <p>The shots were created using Blender and TouchDesigner — a great exercise in making controlled chaos with simulations that respond to input from a MIDI-controller and sound from the stage.</p>
-          <div class="project-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">TouchDesigner</span>
-            <span class="tag">MIDI</span>
+        <div class="toa-clips">
+          <p class="clip-grid-label">Animated sequences</p>
+          <div class="clip-grid">
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 01 ]</div>
+              <p class="clip-label">Visual sequence</p>
+            </div>
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 02 ]</div>
+              <p class="clip-label">MIDI response</p>
+            </div>
+            <div class="clip-card">
+              <div class="clip-placeholder">[ sequence 03 ]</div>
+              <p class="clip-label">Stage visuals</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1293,15 +1377,19 @@
 
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="project-media-placeholder">[ Coming soon ]</div>
+          <div class="video-embed">
+            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+          </div>
         </div>
         <div class="project-info">
           <p class="project-number">03</p>
           <h2>While In Battle I Am Free</h2>
-          <p>Promotion video for a dance performance. Description and video coming soon.</p>
+          <p>Promotion video for a dance performance by the same name. Animated sequences introduce the protagonist and build the visual world of the piece.</p>
+          <p>Created in Blender using the Eevee render engine, with grease pencil elements woven throughout.</p>
           <div class="project-tags">
             <span class="tag">Blender</span>
             <span class="tag">Eevee</span>
+            <span class="tag">Grease Pencil</span>
           </div>
         </div>
       </div>
@@ -1469,7 +1557,7 @@
     </footer>
   </div>
   <div id="experiments" class="page inner-page">
-    <div class="page-hero">
+    <div class="page-hero page-hero--no-border">
       <p class="page-hero-label">Category — 03</p>
       <h1>Experiments</h1>
       <p>Personal work, tests, and technical explorations. No briefs, no clients — just curiosity. This is where new techniques get tried and ideas get stress-tested.</p>
@@ -1484,64 +1572,66 @@
       </div>
     </div>
 
-    <!-- Blender -->
-    <div class="exp-panel active experiments-grid reveal" id="tab-blender">
-      <div class="experiment-card">
-        <div class="experiment-media">
-          <img src="portfolio-assets/experiments/blender/geometryNodes/hallway.gif" alt="Hallway geometry nodes">
+    <div class="exp-panels-wrap">
+      <!-- Blender -->
+      <div class="exp-panel active experiments-grid reveal" id="tab-blender">
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <img src="portfolio-assets/experiments/blender/geometryNodes/hallway.gif" alt="Hallway geometry nodes">
+          </div>
+          <div class="experiment-info">
+            <h3>Geometry Nodes — Hallway</h3>
+            <p>Procedural environment generation using Blender geometry nodes.</p>
+          </div>
         </div>
-        <div class="experiment-info">
-          <h3>Geometry Nodes — Hallway</h3>
-          <p>Procedural environment generation using Blender geometry nodes.</p>
+
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <img src="portfolio-assets/experiments/blender/geometryNodes/fancyStairs_GIF.gif" alt="Fancy stairs geometry nodes">
+          </div>
+          <div class="experiment-info">
+            <h3>Geometry Nodes — Fancy Stairs</h3>
+            <p>Procedural stair generation with dynamic motion in Blender.</p>
+          </div>
+        </div>
+
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <img src="portfolio-assets/experiments/blender/geometryNodes/stairPlatform-GIF.gif" alt="Stair platform geometry nodes">
+          </div>
+          <div class="experiment-info">
+            <h3>Geometry Nodes — Stair Platform</h3>
+            <p>Exploring procedural stair platform dynamics in Blender.</p>
+          </div>
+        </div>
+
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/experiments/blender/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experiment-info">
+            <h3>Trashcan Robot — Walk Cycle</h3>
+            <p>Character animation exercise — rigging and walk cycle for an original character.</p>
+          </div>
         </div>
       </div>
 
-      <div class="experiment-card">
-        <div class="experiment-media">
-          <img src="portfolio-assets/experiments/blender/geometryNodes/fancyStairs_GIF.gif" alt="Fancy stairs geometry nodes">
-        </div>
-        <div class="experiment-info">
-          <h3>Geometry Nodes — Fancy Stairs</h3>
-          <p>Procedural stair generation with dynamic motion in Blender.</p>
+      <!-- Rive -->
+      <div class="exp-panel experiments-grid" id="tab-rive">
+        <div class="exp-coming-soon">
+          <p class="exp-coming-label">Coming soon</p>
+          <p>Rive experiments are on the way.</p>
         </div>
       </div>
 
-      <div class="experiment-card">
-        <div class="experiment-media">
-          <img src="portfolio-assets/experiments/blender/geometryNodes/stairPlatform-GIF.gif" alt="Stair platform geometry nodes">
+      <!-- TouchDesigner -->
+      <div class="exp-panel experiments-grid" id="tab-touchdesigner">
+        <div class="exp-coming-soon">
+          <p class="exp-coming-label">Coming soon</p>
+          <p>TouchDesigner experiments are on the way.</p>
         </div>
-        <div class="experiment-info">
-          <h3>Geometry Nodes — Stair Platform</h3>
-          <p>Exploring procedural stair platform dynamics in Blender.</p>
-        </div>
-      </div>
-
-      <div class="experiment-card">
-        <div class="experiment-media">
-          <video autoplay loop muted playsinline>
-            <source src="portfolio-assets/experiments/blender/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="experiment-info">
-          <h3>Trashcan Robot — Walk Cycle</h3>
-          <p>Character animation exercise — rigging and walk cycle for an original character.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Rive -->
-    <div class="exp-panel experiments-grid" id="tab-rive">
-      <div class="exp-coming-soon">
-        <p class="exp-coming-label">Coming soon</p>
-        <p>Rive experiments are on the way.</p>
-      </div>
-    </div>
-
-    <!-- TouchDesigner -->
-    <div class="exp-panel experiments-grid" id="tab-touchdesigner">
-      <div class="exp-coming-soon">
-        <p class="exp-coming-label">Coming soon</p>
-        <p>TouchDesigner experiments are on the way.</p>
       </div>
     </div>
 
@@ -1632,7 +1722,7 @@
       document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
       document.getElementById('tab-' + id).classList.add('active');
-      event.target.classList.add('active');
+      event.currentTarget.classList.add('active');
     }
 
     function showPage(id) {
