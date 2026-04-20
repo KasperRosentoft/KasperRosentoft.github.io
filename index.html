@@ -1739,12 +1739,14 @@
       <!-- Rive -->
       <div class="exp-panel experiments-grid" id="tab-rive">
         <div class="experiment-card">
-          <div class="experiment-media rive-media">
-            <canvas id="rive-lego-canvas" class="rive-canvas"></canvas>
+          <div class="experiment-media">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/experiments/rive/RiveLego00000168.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="experiment-info">
             <h3>Lego — Rive Experiment</h3>
-            <p>Interactive animation built in Rive. Hover or click to trigger states.</p>
+            <p>Exploring interactive animation with Rive using a Lego character.</p>
           </div>
         </div>
       </div>
@@ -1893,31 +1895,10 @@
     setTimeout(triggerReveals, 200);
   </script>
   <script>
-    if (typeof console.assert !== 'function') {
-      console.assert = function(condition, ...args) {
-        if (!condition) console.warn('Assertion failed:', ...args);
-      };
-    }
-  </script>
-  <script src="portfolio-assets/experiments/rive/rive.js" onerror="console.warn('Rive failed to load')"></script>
-  <script>
     let riveInstance = null;
 
     function initRive() {
-      if (riveInstance) return;
-      if (typeof rive === 'undefined') { console.warn('Rive runtime not available'); return; }
-      const canvas = document.getElementById('rive-lego-canvas');
-      if (!canvas) return;
-      try {
-        riveInstance = new rive.Rive({
-          src: 'portfolio-assets/experiments/rive/241120_first_test.riv',
-          canvas: canvas,
-          autoplay: true,
-          onLoad: () => riveInstance.resizeDrawingSurfaceToCanvas(),
-        });
-      } catch(e) {
-        console.warn('Rive init failed:', e);
-      }
+      // placeholder for when Rive is re-enabled
     }
   </script>
 </body>
