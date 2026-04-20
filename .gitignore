@@ -3,3 +3,5 @@ portfolio-assets/**/*.mp4
 portfolio-assets/**/*.mov
 !portfolio-assets/experiments/**/*.mp4
 !portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/*.mp4
+!portfolio-assets/experiments/rive/*.mp4
+!portfolio-assets/motionDesign/papirprinsessen/*.mp4

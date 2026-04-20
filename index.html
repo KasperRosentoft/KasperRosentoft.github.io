@@ -397,6 +397,22 @@
       color: #666;
     }
 
+    .project-external-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500;
+      color: var(--black); text-decoration: none;
+      border: 1.5px solid rgba(0,0,0,0.15);
+      padding: 9px 18px; border-radius: 100px;
+      margin-top: 24px;
+      transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+    }
+
+    .project-external-link:hover {
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--white);
+    }
+
     /* ── FULL WIDTH PROJECT SECTION ── */
     .project-full {
       background: var(--black);
@@ -634,6 +650,25 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ── GIF STRIP ── */
+    .gif-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding-top: 20px;
+    }
+
+    .gif-strip .clip-card video,
+    .gif-strip .clip-card img {
+      width: 100%; display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    @media (max-width: 700px) {
+      .gif-strip { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── TOA CONTAINER ── */
@@ -1329,6 +1364,56 @@
 
     <div class="projects-list">
 
+      <!-- Papirprinsessen — self-contained with GIF strip -->
+      <div class="project-entry-toa reveal">
+        <div class="project-entry">
+          <div class="project-media">
+            <div class="video-local">
+              <video controls playsinline>
+                <source src="portfolio-assets/motionDesign/papirprinsessen/Forside Workbench wWireframes.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-info">
+            <p class="project-number">01</p>
+            <h2>Papirprinsessen</h2>
+            <p>My first exam at the Danish School of Media and Journalism was a digital children's book about the human body. Our solution was to follow the journey of "Papirprinsessen" exploring a world made up of cardboard, tape and colored markers.</p>
+            <p>From just 3 weeks of work I am very proud of how far we got with this project — I got to focus on creating the universe in 3D along with some cute animations.</p>
+            <div class="project-tags">
+              <span class="tag">Blender</span>
+              <span class="tag">After Effects</span>
+            </div>
+            <a class="project-external-link" href="https://www.behance.net/gallery/189794823/Papirprinsessen-Udfolder-sin-viden-om-kroppen" target="_blank">
+              Read more on Behance
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="toa-clips">
+          <p class="clip-grid-label">Animated sequences</p>
+          <div class="gif-strip">
+            <div class="clip-card">
+              <img src="portfolio-assets/motionDesign/papirprinsessen/videos/Skelettransformation GIF from ezgif.gif" alt="Skelettransformation">
+              <p class="clip-label">Skelettransformation</p>
+            </div>
+            <div class="clip-card">
+              <img src="portfolio-assets/motionDesign/papirprinsessen/videos/Trold GIF 04 optimized.gif" alt="Trold">
+              <p class="clip-label">Trold</p>
+            </div>
+            <div class="clip-card">
+              <img src="portfolio-assets/motionDesign/papirprinsessen/videos/Togfører GIF export V01.gif" alt="Togfører">
+              <p class="clip-label">Togfører</p>
+            </div>
+            <div class="clip-card">
+              <img src="portfolio-assets/motionDesign/papirprinsessen/videos/Troldmand GIF 04 optimized.gif" alt="Troldmand">
+              <p class="clip-label">Troldmand</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="project-entry reveal">
         <div class="project-media">
           <div class="video-embed">
@@ -1336,7 +1421,7 @@
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">01</p>
+          <p class="project-number">02</p>
           <h2>DoorDing</h2>
           <p>This project was made for DoorDing to illustrate their concept of making digital doorbells that let you control them from your phone.</p>
           <p>It was my first attempt at properly making characters in After Effects and animating them with rigs.</p>
@@ -1355,7 +1440,7 @@
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">02</p>
+          <p class="project-number">03</p>
           <h2>Iværksætterpuljen</h2>
           <p>This project was made for Erhvervshus Sjælland to showcase how small businesses can apply for funding with a step-by-step guide.</p>
           <p>A further exercise in character animation and rigging in After Effects, pushing the complexity of the rig further than the DoorDing project.</p>
@@ -1374,7 +1459,7 @@
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">03</p>
+          <p class="project-number">04</p>
           <h2>While In Battle I Am Free</h2>
           <p>Promotion video for a dance performance by the same name. Animated sequences introduce the protagonist and build the visual world of the piece.</p>
           <p>Created in Blender using the Eevee render engine, with grease pencil elements woven throughout.</p>
