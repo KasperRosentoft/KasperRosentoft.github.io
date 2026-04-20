@@ -105,12 +105,6 @@
       padding-top: 58px;
     }
 
-    .hero {
-      padding: 100px 60px 80px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
     .hero-tag {
       display: inline-block;
       font-size: 11px;
@@ -639,7 +633,58 @@
 
     .footer-links a:hover { color: var(--black); }
 
-    /* ── SCROLL ANIMATIONS ── */
+    /* ── HERO TWO COLUMN ── */
+    .hero {
+      padding: 80px 60px 60px;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text { }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--gray-light);
+    }
+
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 60px 24px 40px; }
+      .hero-photo { aspect-ratio: 4/3; }
+    }
+
+    /* ── CATEGORY CARD VIDEOS ── */
+    .card-img-area {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+    }
+
+    .card-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 400ms var(--ease-out-cubic);
+      position: absolute; top: 0; left: 0;
+    }
+
+    .card-video.active { opacity: 1; }
+
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(245,243,238,0.95) 0%, rgba(245,243,238,0.3) 50%, transparent 100%);
+    }
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -1077,18 +1122,23 @@
   <!-- ═══ HOME ═══ -->
   <div id="home" class="page active">
     <section class="hero">
-      <div class="hero-tag">Motion & Visual Artist</div>
-      <h1>Welcome to<br>my <em>portfolio</em></h1>
-      <p class="hero-sub">I make motion design, music visuals, VFX and a lot of other stuff. I'm drawn to projects where the craft is pushed somewhere unfamiliar — whether that's animating a fantasy world for a musician or rigging characters from scratch in After Effects.</p>
-      <div class="hero-actions">
-        <a class="btn-showreel" onclick="openLightbox()">
-          <span class="play-icon">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-              <path d="M1 1L11 7L1 13V1Z" fill="white"/>
-            </svg>
-          </span>
-          Watch showreel
-        </a>
+      <div class="hero-text">
+        <div class="hero-tag">Motion & Visual Artist</div>
+        <h1>Welcome to<br>my <em>portfolio</em></h1>
+        <p class="hero-sub">I'm drawn to projects where the craft is pushed somewhere unfamiliar — whether that's animating a fantasy world for a musician or rigging characters in Blender. I love creating in 3D and in the last couple of years I have developed a deep love for proceduralism and design systems.</p>
+        <div class="hero-actions">
+          <a class="btn-showreel" onclick="openLightbox()">
+            <span class="play-icon">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M1 1L11 7L1 13V1Z" fill="white"/>
+              </svg>
+            </span>
+            Watch showreel
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="portfolio-assets/home/C&F0744.JPG" alt="Kasper Rosentoft">
       </div>
     </section>
 
@@ -1099,9 +1149,19 @@
     <section class="categories reveal">
       <p class="categories-label">Work categories</p>
       <div class="category-grid">
-        <div class="category-card" onclick="showPage('music')">
+
+        <div class="category-card" onclick="showPage('music')" onmouseenter="startCycle('music')" onmouseleave="stopCycle('music')">
           <div class="card-img-area">
-            <div class="card-placeholder">[ image ]</div>
+            <video class="card-video active" autoplay loop muted playsinline>
+              <source src="portfolio-assets/musicVisuals/neonpriest/FINAL_Promovideo 9_16.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="music" data-index="0">
+              <source src="portfolio-assets/musicVisuals/kingtommi/videos/Book_01.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="music" data-index="1">
+              <source src="portfolio-assets/musicVisuals/ungklang/images/Saudade.mp4" type="video/mp4">
+            </video>
+            <div class="card-overlay"></div>
           </div>
           <div class="card-bottom">
             <span class="card-title">Music<br>visuals</span>
@@ -1113,9 +1173,18 @@
           </div>
         </div>
 
-        <div class="category-card" onclick="showPage('motion')">
+        <div class="category-card" onclick="showPage('motion')" onmouseenter="startCycle('motion')" onmouseleave="stopCycle('motion')">
           <div class="card-img-area">
-            <div class="card-placeholder">[ image ]</div>
+            <video class="card-video active" autoplay loop muted playsinline>
+              <source src="portfolio-assets/motionDesign/denFantastiskeBus/denFantastiskeBus_Urban_test.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="motion" data-index="0">
+              <source src="portfolio-assets/motionDesign/papirprinsessen/Forside Workbench wWireframes.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="motion" data-index="1">
+              <source src="portfolio-assets/experiments/blender/ordinaryfolkStyle/ordinaryFolk_webflowStyle.mp4" type="video/mp4">
+            </video>
+            <div class="card-overlay"></div>
           </div>
           <div class="card-bottom">
             <span class="card-title">Motion<br>Design</span>
@@ -1127,9 +1196,18 @@
           </div>
         </div>
 
-        <div class="category-card" onclick="showPage('experiments')">
+        <div class="category-card" onclick="showPage('experiments')" onmouseenter="startCycle('experiments')" onmouseleave="stopCycle('experiments')">
           <div class="card-img-area">
-            <div class="card-placeholder">[ image ]</div>
+            <video class="card-video active" autoplay loop muted playsinline>
+              <source src="portfolio-assets/experiments/blender/geometryNodes/Procedural_Landscape_Demo.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="experiments" data-index="0">
+              <source src="portfolio-assets/experiments/blender/trashcanRobot/Walk Cycle new.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="experiments" data-index="1">
+              <source src="portfolio-assets/experiments/rive/RiveLego00000168.mp4" type="video/mp4">
+            </video>
+            <div class="card-overlay"></div>
           </div>
           <div class="card-bottom">
             <span class="card-title">Experiments</span>
@@ -1141,9 +1219,18 @@
           </div>
         </div>
 
-        <div class="category-card" onclick="showPage('video')">
+        <div class="category-card" onclick="showPage('video')" onmouseenter="startCycle('video')" onmouseleave="stopCycle('video')">
           <div class="card-img-area">
-            <div class="card-placeholder">[ image ]</div>
+            <video class="card-video active" autoplay loop muted playsinline>
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/gameplayOverview.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="video" data-index="0">
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/castingSpell.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="video" data-index="1">
+              <source src="portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/mapTiles.mp4" type="video/mp4">
+            </video>
+            <div class="card-overlay"></div>
           </div>
           <div class="card-bottom">
             <span class="card-title">Video</span>
@@ -1154,6 +1241,7 @@
             </span>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1340,16 +1428,16 @@
             <p class="project-number">02</p>
             <h2>Neon Priest — Forever</h2>
             <p>The band Neon Priest wanted to create a promo video for social media for their new song "Forever".</p>
-            <p>The shots were created in Blender and were a great exercise in making controlled chaos with different simulations and dynamic camera angles.</p>
+            <p>The shots were created using Blender and was a great exercise in making controlled chaos with different simulations and dynamic camera angles. Below you can see the visuals displayed at Roskilde Festival during their performance on the EOS stage.</p>
             <div class="project-tags">
               <span class="tag">Blender</span>
-              <span class="tag">Eevee</span>
+              <span class="tag">After Effects</span>
               <span class="tag">Simulation</span>
             </div>
           </div>
         </div>
         <div class="toa-clips">
-          <p class="clip-grid-label">Photography</p>
+          <p class="clip-grid-label">Photographs from Roskilde Festival</p>
           <div class="gif-strip" style="grid-template-columns: 1fr 1fr;">
             <div class="clip-card">
               <img src="portfolio-assets/musicVisuals/neonpriest/images/Neon_Priest-RF23-FlemmingBoJensen-04.jpeg" alt="Neon Priest live" style="width:100%;display:block;">
@@ -1370,17 +1458,18 @@
           <div class="project-info">
             <p class="project-number">03</p>
             <h2>Ungklang — Roskilde Festival</h2>
-            <p>The choir group Ungklang wanted to create a promo video for social media for their new song "Forever".</p>
+            <p>The choir group Ungklang wanted an EP cover for their new release called "Lys". Furthermore they wanted concert visuals for their whole performance at Roskilde Festival 2025 and it was a blast!</p>
             <p>The shots were created using Blender and TouchDesigner — a great exercise in making controlled chaos with different simulations that respond to input from a MIDI-controller and sound from the stage.</p>
             <div class="project-tags">
               <span class="tag">Blender</span>
               <span class="tag">TouchDesigner</span>
+              <span class="tag">Resolume Arena</span>
               <span class="tag">MIDI</span>
             </div>
           </div>
         </div>
         <div class="toa-clips">
-          <p class="clip-grid-label">Animated sequences</p>
+          <p class="clip-grid-label">Recordings from Roskilde Festival</p>
           <div class="clip-grid">
             <div class="clip-card">
               <video autoplay loop muted playsinline>
@@ -1432,9 +1521,30 @@
 
     <div class="projects-list">
 
-      <!-- Papirprinsessen — self-contained with GIF strip -->
+      <!-- 01 Den Fantastiske Bus -->
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="video-local">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/motionDesign/denFantastiskeBus/denFantastiskeBus_Urban_test.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">01</p>
+          <h2>Den Fantastiske Bus</h2>
+          <p>Conceptual and R&D development for Skjaldborn, referencing Den Fantastiske Bus (Gyldendal) by Jakob Martin Strid.</p>
+          <p>This project was an exploration of how the beloved children's book could be animated with a mix of 2D and 3D.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">R&D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Papirprinsessen -->
       <div class="project-entry-toa reveal">
-        <div class="project-entry">
+        <div class="project-entry reverse">
           <div class="project-media">
             <div class="video-local">
               <video autoplay loop muted playsinline>
@@ -1443,7 +1553,7 @@
             </div>
           </div>
           <div class="project-info">
-            <p class="project-number">01</p>
+            <p class="project-number">02</p>
             <h2>Papirprinsessen</h2>
             <p>My first exam at the Danish School of Media and Journalism was a digital children's book about the human body. Our solution was to follow the journey of "Papirprinsessen" exploring a world made up of cardboard, tape and colored markers.</p>
             <p>From just 3 weeks of work I am very proud of how far we got with this project — I got to focus on creating the universe in 3D along with some cute animations.</p>
@@ -1478,6 +1588,45 @@
         </div>
       </div>
 
+      <!-- 03 While In Battle I Am Free -->
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="video-embed">
+            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">03</p>
+          <h2>While In Battle I Am Free</h2>
+          <p>Promotion video for a dance performance by the same name. Animated sequences introduce the protagonist and build the visual world of the piece.</p>
+          <p>Created in Blender using the Eevee render engine, with grease pencil elements woven throughout.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">Eevee</span>
+            <span class="tag">Grease Pencil</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Sonic College -->
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/CJjbxANLzRA" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+        <div class="project-info">
+          <p class="project-number">04</p>
+          <h2>Motion Design with Sonic College</h2>
+          <p>This was a school project at DMJX where we collaborated with students from Sonic College to create a motion design piece.</p>
+          <p>It was a really fun and rewarding experience working with people that are so deep into sound and being more aware of making design choices that had sound in mind.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 DoorDing -->
       <div class="project-entry reveal">
         <div class="project-media">
           <div class="video-embed">
@@ -1485,7 +1634,7 @@
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">02</p>
+          <p class="project-number">05</p>
           <h2>DoorDing</h2>
           <p>This project was made for DoorDing to illustrate their concept of making digital doorbells that let you control them from your phone.</p>
           <p>It was my first attempt at properly making characters in After Effects and animating them with rigs.</p>
@@ -1497,33 +1646,15 @@
         </div>
       </div>
 
+      <!-- 06 Auwau -->
       <div class="project-entry reverse reveal">
-        <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/VFg1maUY-zU" allowfullscreen allow="autoplay"></iframe>
-          </div>
-        </div>
-        <div class="project-info">
-          <p class="project-number">03</p>
-          <h2>Iværksætterpuljen</h2>
-          <p>This project was made for Erhvervshus Sjælland to showcase how small businesses can apply for funding with a step-by-step guide.</p>
-          <p>A further exercise in character animation and rigging in After Effects, pushing the complexity of the rig further than the DoorDing project.</p>
-          <div class="project-tags">
-            <span class="tag">After Effects</span>
-            <span class="tag">Illustrator</span>
-            <span class="tag">Character Rigging</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-entry reveal">
         <div class="project-media">
           <div class="video-embed">
             <iframe src="https://www.youtube.com/embed/MKpXz3u1MVE" allowfullscreen allow="autoplay"></iframe>
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">04</p>
+          <p class="project-number">06</p>
           <h2>Auwau — Backup-as-a-service Explainer</h2>
           <p>The biggest challenge with this project was explaining digital infrastructure in a simple and understandable way. This is where I really started playing with 3D in After Effects and to this day I am still pretty satisfied with how some of the sequences turned out.</p>
           <div class="project-tags">
@@ -1533,37 +1664,22 @@
         </div>
       </div>
 
-      <div class="project-entry reverse reveal">
-        <div class="project-media">
-          <div class="project-media-placeholder">[ Coming soon ]</div>
-        </div>
-        <div class="project-info">
-          <p class="project-number">05</p>
-          <h2>Den Fantastiske Bus</h2>
-          <p>Conceptual and R&D development for Skjaldborn, referencing Den Fantastiske Bus (Gyldendal) by Jakob Martin Strid.</p>
-          <p>This project was an exploration of how the beloved children's book could be animated with a mix of 2D and 3D.</p>
-          <div class="project-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">R&D</span>
-          </div>
-        </div>
-      </div>
-
+      <!-- 07 Iværksætterpuljen -->
       <div class="project-entry reveal">
         <div class="project-media">
           <div class="video-embed">
-            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
+            <iframe src="https://www.youtube.com/embed/VFg1maUY-zU" allowfullscreen allow="autoplay"></iframe>
           </div>
         </div>
         <div class="project-info">
-          <p class="project-number">06</p>
-          <h2>While In Battle I Am Free</h2>
-          <p>Promotion video for a dance performance by the same name. Animated sequences introduce the protagonist and build the visual world of the piece.</p>
-          <p>Created in Blender using the Eevee render engine, with grease pencil elements woven throughout.</p>
+          <p class="project-number">07</p>
+          <h2>Iværksætterpuljen</h2>
+          <p>This project was made for Erhvervshus Sjælland to showcase how small businesses can apply for funding with a step-by-step guide.</p>
+          <p>A further exercise in character animation and rigging in After Effects, pushing the complexity of the rig further than the DoorDing project.</p>
           <div class="project-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">Eevee</span>
-            <span class="tag">Grease Pencil</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">Illustrator</span>
+            <span class="tag">Character Rigging</span>
           </div>
         </div>
       </div>
@@ -1795,6 +1911,18 @@
         <div class="experiment-card">
           <div class="experiment-media">
             <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/experiments/blender/ordinaryfolkStyle/ordinaryFolk_webflowStyle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experiment-info">
+            <h3>Ordinary Folk — Webflow Style</h3>
+            <p>Exploring a Webflow-inspired animation style in Blender.</p>
+          </div>
+        </div>
+
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <video autoplay loop muted playsinline>
               <source src="portfolio-assets/experiments/blender/geometryNodes/Procedural_Landscape_Demo.mp4" type="video/mp4">
             </video>
           </div>
@@ -1901,6 +2029,44 @@
       label.textContent = expanded ? 'Show all' : 'Show less';
     }
 
+    const cycleTimers = {};
+    const cycleIndexes = {};
+
+    function startCycle(category) {
+      const videos = document.querySelectorAll(`[data-cycle="${category}"]`);
+      if (!videos.length) return;
+      cycleIndexes[category] = 0;
+      function showNext() {
+        const idx = cycleIndexes[category] % videos.length;
+        document.querySelectorAll(`[data-cycle="${category}"]`).forEach((v, i) => {
+          if (i === idx) {
+            v.classList.add('active');
+            v.play();
+          } else {
+            v.classList.remove('active');
+            v.pause();
+          }
+        });
+        cycleIndexes[category]++;
+        cycleTimers[category] = setTimeout(showNext, 1800);
+      }
+      showNext();
+    }
+
+    function stopCycle(category) {
+      clearTimeout(cycleTimers[category]);
+      document.querySelectorAll(`[data-cycle="${category}"]`).forEach(v => {
+        v.classList.remove('active');
+        v.pause();
+      });
+      // restore the always-on first video
+      const card = document.querySelector(`[onmouseenter="startCycle('${category}')"]`);
+      if (card) {
+        const first = card.querySelector('.card-video');
+        if (first) first.classList.add('active');
+      }
+    }
+
     function toggleClips() {
       const hidden = document.querySelectorAll('.clip-hidden');
       const btn = document.getElementById('toa-expand-btn');
@@ -1914,7 +2080,7 @@
     function openLightbox() {
       const lb = document.getElementById('showreel-lightbox');
       const iframe = document.getElementById('showreel-iframe');
-      iframe.src = 'https://player.vimeo.com/video/1037344990?autoplay=1&title=0&byline=0&portrait=0';
+      iframe.src = 'https://www.youtube.com/embed/ieagkDEW0Ac?autoplay=1';
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
