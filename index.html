@@ -1861,6 +1861,7 @@
       document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
       document.getElementById('tab-' + id).classList.add('active');
       event.currentTarget.classList.add('active');
+      if (id === 'rive') setTimeout(initRive, 50);
     }
 
     function showPage(id) {
@@ -1890,31 +1891,32 @@
 
     // Initial reveal for home
     setTimeout(triggerReveals, 200);
-  <script src="https://unpkg.com/@rive-app/canvas@latest/rive.js"></script>
+  </script>
   <script>
-    // Initialise Rive when the tab becomes active
+    if (typeof console.assert !== 'function') {
+      console.assert = function(condition, ...args) {
+        if (!condition) console.warn('Assertion failed:', ...args);
+      };
+    }
+  </script>
+  <script src="portfolio-assets/experiments/rive/rive.js" onerror="console.warn('Rive failed to load')"></script>
+  <script>
     let riveInstance = null;
 
     function initRive() {
-      if (riveInstance) return; // already running
+      if (riveInstance) return;
+      if (typeof rive === 'undefined') { console.warn('Rive runtime not available'); return; }
       const canvas = document.getElementById('rive-lego-canvas');
       if (!canvas) return;
-      riveInstance = new rive.Rive({
-        src: 'portfolio-assets/experiments/rive/241120_first_test.riv',
-        canvas: canvas,
-        autoplay: true,
-        onLoad: () => {
-          riveInstance.resizeDrawingSurfaceToCanvas();
-        },
-      });
-    }
-
-    // Hook into switchTab so Rive loads when the tab is clicked
-    const _originalSwitchTab = switchTab;
-    function switchTab(id) {
-      _originalSwitchTab(id);
-      if (id === 'rive') {
-        setTimeout(initRive, 50);
+      try {
+        riveInstance = new rive.Rive({
+          src: 'portfolio-assets/experiments/rive/241120_first_test.riv',
+          canvas: canvas,
+          autoplay: true,
+          onLoad: () => riveInstance.resizeDrawingSurfaceToCanvas(),
+        });
+      } catch(e) {
+        console.warn('Rive init failed:', e);
       }
     }
   </script>
