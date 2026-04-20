@@ -6,3 +6,5 @@ portfolio-assets/**/*.mov
 !portfolio-assets/experiments/rive/*.mp4
 !portfolio-assets/motionDesign/papirprinsessen/*.mp4
 !portfolio-assets/experiments/frame-by-frame/*.mp4
+!portfolio-assets/musicVisuals/kingtommi/videos/*.mp4
+!portfolio-assets/musicVisuals/ungklang/images/*.mp4

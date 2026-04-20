@@ -1263,7 +1263,9 @@
       <div class="project-entry-toa reveal">
         <div class="project-entry">
           <div class="project-media">
-            <div class="project-media-placeholder">[ Video coming soon ]</div>
+            <div class="video-embed">
+              <iframe src="https://www.youtube.com/embed/yjcReH8kAps" allowfullscreen allow="autoplay"></iframe>
+            </div>
           </div>
           <div class="project-info">
             <p class="project-number">01</p>
@@ -1281,18 +1283,47 @@
           <p class="clip-grid-label">Animated sequences</p>
           <div class="clip-grid">
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 01 ]</div>
-              <p class="clip-label">Intro — Book sequence</p>
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Book_01.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 02 ]</div>
-              <p class="clip-label">Map sequence</p>
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Book_02.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 03 ]</div>
-              <p class="clip-label">Character intro</p>
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Book_03_opening.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card clip-hidden">
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Book_04_flip.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card clip-hidden">
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Map 01 wInk00000000.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card clip-hidden">
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Map 02_wInk00000000.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card clip-hidden">
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/kingtommi/videos/Map 03 For Export00000000.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
+          <button class="clip-expand-btn" id="kingtommi-expand-btn" onclick="toggleKingtommiClips()">
+            <span id="kingtommi-expand-label">Show all</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -1321,13 +1352,13 @@
       <div class="project-entry-toa reveal">
         <div class="project-entry">
           <div class="project-media">
-            <div class="project-media-placeholder">[ Video coming soon ]</div>
+            <img src="portfolio-assets/musicVisuals/ungklang/images/Ungklang LYS_EP.jpg" alt="Ungklang — Roskilde Festival" style="width:100%;display:block;border-radius:12px;">
           </div>
           <div class="project-info">
             <p class="project-number">03</p>
             <h2>Ungklang — Roskilde Festival</h2>
-            <p>The choir group Ungklang wanted to create a promo video for social media for their performance at Roskilde Festival.</p>
-            <p>The shots were created using Blender and TouchDesigner — simulations that respond to input from a MIDI-controller and sound from the stage, shown in the sequences below.</p>
+            <p>The choir group Ungklang wanted to create a promo video for social media for their new song "Forever".</p>
+            <p>The shots were created using Blender and TouchDesigner — a great exercise in making controlled chaos with different simulations that respond to input from a MIDI-controller and sound from the stage.</p>
             <div class="project-tags">
               <span class="tag">Blender</span>
               <span class="tag">TouchDesigner</span>
@@ -1339,16 +1370,18 @@
           <p class="clip-grid-label">Animated sequences</p>
           <div class="clip-grid">
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 01 ]</div>
-              <p class="clip-label">Visual sequence</p>
+              <video autoplay loop muted playsinline>
+                <source src="portfolio-assets/musicVisuals/ungklang/images/att.Che_7Rd5kUzn...nkgvNrVN-jVU.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 02 ]</div>
-              <p class="clip-label">MIDI response</p>
+              <div class="clip-placeholder">[ Otkeanutkum — coming soon ]</div>
             </div>
             <div class="clip-card">
-              <div class="clip-placeholder">[ sequence 03 ]</div>
-              <p class="clip-label">Stage visuals</p>
+              <div class="clip-placeholder">[ Saudade — coming soon ]</div>
+            </div>
+            <div class="clip-card">
+              <div class="clip-placeholder">[ Under the Water — coming soon ]</div>
             </div>
           </div>
         </div>
@@ -1822,6 +1855,16 @@
   </div>
 
   <script>
+    function toggleKingtommiClips() {
+      const btn = document.getElementById('kingtommi-expand-btn');
+      const label = document.getElementById('kingtommi-expand-label');
+      const expanded = btn.classList.contains('expanded');
+      const hidden = btn.closest('.toa-clips').querySelectorAll('.clip-hidden');
+      hidden.forEach(el => el.classList.toggle('visible', !expanded));
+      btn.classList.toggle('expanded', !expanded);
+      label.textContent = expanded ? 'Show all' : 'Show less';
+    }
+
     function toggleClips() {
       const hidden = document.querySelectorAll('.clip-hidden');
       const btn = document.getElementById('toa-expand-btn');
