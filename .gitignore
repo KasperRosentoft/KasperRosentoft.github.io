@@ -8,5 +8,7 @@ portfolio-assets/**/*.mov
 !portfolio-assets/experiments/frame-by-frame/*.mp4
 !portfolio-assets/experiments/blender/ordinaryfolkStyle/*.mp4
 !portfolio-assets/musicVisuals/kingtommi/videos/*.mp4
+!portfolio-assets/musicVisuals/neonpriest/videos/*.mp4
 !portfolio-assets/musicVisuals/ungklang/images/*.mp4
 !portfolio-assets/motionDesign/denFantastiskeBus/*.mp4
+!portfolio-assets/home/thumbnails/*.mp4
