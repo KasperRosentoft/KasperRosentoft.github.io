@@ -2,9 +2,9 @@
 portfolio-assets/**/*.mp4
 portfolio-assets/**/*.mov
 !portfolio-assets/experiments/**/*.mp4
-!portfolio-assets/videoAndPhotography/toaBoardGameTutorial/videos/*.mp4
-!portfolio-assets/videoAndPhotography/dramaDokumentar/sequences/*.mp4
-!portfolio-assets/videoAndPhotography/dramaDokumentar/images/*.mp4
+!portfolio-assets/video/toaBoardGameTutorial/videos/*.mp4
+!portfolio-assets/video/dramaDokumentar/sequences/*.mp4
+!portfolio-assets/video/dramaDokumentar/images/*.mp4
 !portfolio-assets/experiments/rive/*.mp4
 !portfolio-assets/motionDesign/papirprinsessen/*.mp4
 !portfolio-assets/experiments/frame-by-frame/*.mp4
