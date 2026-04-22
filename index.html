@@ -1028,8 +1028,9 @@
     .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
     .about-skills-section {
-      padding: 48px 0 0;
+      padding: 48px 0;
       border-top: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
       margin-top: 48px;
       display: flex;
       gap: 48px;
@@ -1275,13 +1276,19 @@
         <div class="category-card" onclick="showPage('video')" onmouseenter="startCycle('video')" onmouseleave="stopCycle('video')">
           <div class="card-img-area">
             <video class="card-video active" autoplay loop muted playsinline>
-              <source src="portfolio-assets/video/toaBoardGameTutorial/videos/gameplayOverview.mp4" type="video/mp4">
+              <source src="portfolio-assets/video/dramaDokumentar/sequences/Intro.mp4" type="video/mp4">
             </video>
             <video class="card-video" muted playsinline data-cycle="video" data-index="0">
-              <source src="portfolio-assets/video/toaBoardGameTutorial/videos/castingSpell.mp4" type="video/mp4">
+              <source src="portfolio-assets/video/dramaDokumentar/sequences/Benny.mp4" type="video/mp4">
             </video>
             <video class="card-video" muted playsinline data-cycle="video" data-index="1">
-              <source src="portfolio-assets/video/toaBoardGameTutorial/videos/mapTiles.mp4" type="video/mp4">
+              <source src="portfolio-assets/video/dramaDokumentar/sequences/Ambulance.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="video" data-index="2">
+              <source src="portfolio-assets/video/dramaDokumentar/images/walk.mp4" type="video/mp4">
+            </video>
+            <video class="card-video" muted playsinline data-cycle="video" data-index="3">
+              <source src="portfolio-assets/video/dramaDokumentar/images/interview.mp4" type="video/mp4">
             </video>
             <div class="card-overlay"></div>
           </div>
@@ -1353,7 +1360,7 @@
         </div>
       </section>
 
-      <section class="timeline-section reveal" style="padding-left:0;padding-right:0;">
+      <section class="timeline-section reveal" style="padding-left:0;padding-right:0;margin-top:48px;">
         <p class="timeline-label">Experience & Education</p>
         <div class="timeline">
           <div class="timeline-item">
@@ -1681,19 +1688,24 @@
       <!-- 03 While In Battle I Am Free -->
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://player.vimeo.com/video/1174697237?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
-          </div>
+          <div class="video-facade" onclick="loadVimeo(this, '1174697237')">
+              <img src="portfolio-assets/motionDesign/whileInBattleIAmFree/thumbnail.jpg" alt="While In Battle I Am Free" class="facade-thumb" onerror="this.style.background='#1a1a1a';this.style.display='block'">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
         </div>
         <div class="project-info">
           <p class="project-number">03</p>
           <h2>While In Battle I Am Free</h2>
-          <p>Promotion video for a dance performance by the same name. Animated sequences introduce the protagonist and build the visual world of the piece.</p>
-          <p>Created in Blender using the Eevee render engine, with grease pencil elements woven throughout.</p>
+          <p>This video was a promotion of a dance performance of the same name which would happen at the famous Blågårds Plads. I wanted to create a mysterious atmosphere while incorporating features of Blågårds Plads.</p>
+          <p>The shots were created using Blender and experimenting with geometry nodes to create streams of sand and assembling objects with small sand particles. The statue was 3D scanned using Polycam.</p>
           <div class="project-tags">
             <span class="tag">Blender</span>
-            <span class="tag">Eevee</span>
-            <span class="tag">Grease Pencil</span>
+            <span class="tag">Geometry Nodes</span>
+            <span class="tag">Polycam</span>
           </div>
         </div>
       </div>
@@ -1701,9 +1713,14 @@
       <!-- 04 Sonic College -->
       <div class="project-entry reverse reveal">
         <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/CJjbxANLzRA" allowfullscreen allow="autoplay"></iframe>
-          </div>
+          <div class="video-facade" onclick="loadYoutube(this, 'CJjbxANLzRA')">
+              <img src="portfolio-assets/motionDesign/sonicCollege/thumbnail.jpg" alt="Sonic College" class="facade-thumb" onerror="this.style.background='#1a1a1a';this.style.display='block'">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
         </div>
         <div class="project-info">
           <p class="project-number">04</p>
@@ -1716,12 +1733,64 @@
         </div>
       </div>
 
+      <div class="project-entry reverse reveal">
+        <div class="project-media">
+          <div class="video-local">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/motionDesign/minNakke/250120 MinNakke Explainer_V03.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="project-info">
+          <h2>minNakke</h2>
+          <p>This was a project for an exam at The Danish School of Media and Journalism where the product was an app about solving increasing neck pain among teenagers. Our app was called "minNakke" and the purpose of this video was to explain the concept.</p>
+          <div class="project-tags">
+            <span class="tag">After Effects</span>
+            <span class="tag">Blender</span>
+          </div>
+          <a class="project-external-link" href="https://www.behance.net/gallery/217554299/MinNakke-UIUX-Design-Motion-Graphic-" target="_blank">
+            Read more on Behance
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="video-local">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/motionDesign/forberedtFællesskab/ForberedtFællesskab_Explainer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="project-info">
+          <h2>Forberedt Fællesskab</h2>
+          <p>This was a project for an exam at The Danish School of Media and Journalism where the product was a webpage about prepping through co-creation. Our website was called "Forberedt Fællesskab" and the purpose of this video was to explain the concept.</p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+          </div>
+          <a class="project-external-link" href="https://www.behance.net/gallery/228871825/Forberedt-Faelleskab-UIUX-Branding-" target="_blank">
+            Read more on Behance
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+              <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
       <!-- 05 DoorDing -->
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://player.vimeo.com/video/1174698428?autoplay=0&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>
-          </div>
+          <div class="video-facade" onclick="loadVimeo(this, '1174698428')">
+              <img src="portfolio-assets/motionDesign/doorDing/thumbnail.jpg" alt="DoorDing" class="facade-thumb" onerror="this.style.background='#1a1a1a';this.style.display='block'">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
         </div>
         <div class="project-info">
           <p class="project-number">05</p>
@@ -1739,9 +1808,14 @@
       <!-- 06 Auwau -->
       <div class="project-entry reverse reveal">
         <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/MKpXz3u1MVE" allowfullscreen allow="autoplay"></iframe>
-          </div>
+          <div class="video-facade" onclick="loadYoutube(this, 'MKpXz3u1MVE')">
+              <img src="portfolio-assets/motionDesign/auwau/thumbnail.jpg" alt="Auwau" class="facade-thumb" onerror="this.style.background='#1a1a1a';this.style.display='block'">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
         </div>
         <div class="project-info">
           <p class="project-number">06</p>
@@ -1757,9 +1831,14 @@
       <!-- 07 Iværksætterpuljen -->
       <div class="project-entry reveal">
         <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/VFg1maUY-zU" allowfullscreen allow="autoplay"></iframe>
-          </div>
+          <div class="video-facade" onclick="loadYoutube(this, 'VFg1maUY-zU')">
+              <img src="portfolio-assets/motionDesign/iværksætterpuljen/thumbnail.jpg" alt="Iværksætterpuljen" class="facade-thumb" onerror="this.style.background='#1a1a1a';this.style.display='block'">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
         </div>
         <div class="project-info">
           <p class="project-number">07</p>
@@ -1779,8 +1858,8 @@
     <footer>
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/kasper_rosentoft/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/kasper-rosentoft-592252192/" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
@@ -1800,8 +1879,13 @@
       <div class="project-entry-toa reveal">
         <div class="project-entry">
           <div class="project-media">
-            <div class="video-embed">
-              <iframe src="https://www.youtube.com/embed/2RKnL57OdVY" allowfullscreen allow="autoplay"></iframe>
+            <div class="video-facade" onclick="loadYoutube(this, '2RKnL57OdVY')">
+              <img src="portfolio-assets/video/toaBoardGameTutorial/thumbnail.jpg" alt="Tales of Alethrion" class="facade-thumb">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
             </div>
           </div>
           <div class="project-info">
@@ -1895,23 +1979,7 @@
         </div>
       </div>
 
-      <div class="project-entry reverse reveal">
-        <div class="project-media">
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/ZXLBfVvkAMg" allowfullscreen allow="autoplay"></iframe>
-          </div>
-        </div>
-        <div class="project-info">
-          <p class="project-number">02</p>
-          <h2>Vejrhøj Vingaard</h2>
-          <p>This project was made as part of the Film and TV-production technician education at NEXT.</p>
-          <p>We made a portrait of the Danish wine farm located on the eastern part of Sjælland, staying true to their brand by being playful with the editing and the shots we captured.</p>
-          <div class="project-tags">
-            <span class="tag">DaVinci Resolve</span>
-            <span class="tag">Cinematography</span>
-          </div>
-        </div>
-      </div>
+
 
       <!-- 03 Drama Dokumentar -->
       <div class="project-entry-toa reveal">
@@ -1987,6 +2055,28 @@
         </div>
       </div>
 
+      <div class="project-entry reveal">
+        <div class="project-media">
+          <div class="video-facade" onclick="loadYoutube(this, 'ZXLBfVvkAMg')">
+            <img src="portfolio-assets/video/vejrhøjVingaard/thumbnail.jpg" alt="Vejrhøj Vingaard" class="facade-thumb">
+            <div class="facade-play">
+              <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h2>Vejrhøj Vingaard</h2>
+          <p>This project was made as part of the Film and TV-production technician education at NEXT.</p>
+          <p>We made a portrait of the Danish wine farm located on the eastern part of Sjælland, staying true to their brand by being playful with the editing and the shots we captured.</p>
+          <div class="project-tags">
+            <span class="tag">DaVinci Resolve</span>
+            <span class="tag">Cinematography</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <footer>
@@ -2010,6 +2100,7 @@
     <div class="exp-tabs-wrap">
       <div class="exp-tabs">
         <button class="exp-tab active" onclick="switchTab('blender')">Blender</button>
+        <button class="exp-tab" onclick="switchTab('aftereffects')">After Effects</button>
         <button class="exp-tab" onclick="switchTab('rive')">Rive</button>
         <button class="exp-tab" onclick="switchTab('framebframe')">Frame by Frame</button>
         <button class="exp-tab" onclick="switchTab('touchdesigner')">TouchDesigner</button>
@@ -2082,6 +2173,21 @@
           <div class="experiment-info">
             <h3>Geometry Nodes — Procedural Landscape</h3>
             <p>Procedural landscape generation using Blender geometry nodes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- After Effects -->
+      <div class="exp-panel experiments-grid" id="tab-aftereffects">
+        <div class="experiment-card">
+          <div class="experiment-media">
+            <video autoplay loop muted playsinline>
+              <source src="portfolio-assets/experiments/afterEffects/codedDesign_Rebrand_BitmapZeroToHero.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experiment-info">
+            <h3>Coded Design — Bitmap Zero to Hero</h3>
+            <p>Motion experiment in After Effects exploring bitmap and rebrand animation techniques.</p>
           </div>
         </div>
       </div>
@@ -2174,6 +2280,10 @@
   <script>
     function loadYoutube(el, videoId) {
       el.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+    }
+
+    function loadVimeo(el, videoId) {
+      el.innerHTML = `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>`;
     }
 
     function toggleKingtommiClips() {

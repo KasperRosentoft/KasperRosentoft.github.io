@@ -1,18 +1,31 @@
 .DS_Store
 portfolio-assets/**/*.mp4
 portfolio-assets/**/*.mov
-!portfolio-assets/experiments/**/*.mp4
+
+# Video
 !portfolio-assets/video/toaBoardGameTutorial/videos/*.mp4
 !portfolio-assets/video/dramaDokumentar/sequences/*.mp4
 !portfolio-assets/video/dramaDokumentar/images/*.mp4
+
+# Experiments
+!portfolio-assets/experiments/**/*.mp4
 !portfolio-assets/experiments/rive/*.mp4
-!portfolio-assets/motionDesign/papirprinsessen/*.mp4
 !portfolio-assets/experiments/frame-by-frame/*.mp4
 !portfolio-assets/experiments/blender/ordinaryfolkStyle/*.mp4
+!portfolio-assets/experiments/afterEffects/*.mp4
+
+# Music Visuals
 !portfolio-assets/musicVisuals/kingtommi/videos/*.mp4
 !portfolio-assets/musicVisuals/kingtommi/images/*.mp4
 !portfolio-assets/musicVisuals/neonpriest/videos/*.mp4
 !portfolio-assets/musicVisuals/neonpriest/*.mp4
 !portfolio-assets/musicVisuals/ungklang/images/*.mp4
+
+# Motion Design
 !portfolio-assets/motionDesign/denFantastiskeBus/*.mp4
+!portfolio-assets/motionDesign/minNakke/*.mp4
+!portfolio-assets/motionDesign/forberedtFællesskab/*.mp4
+!portfolio-assets/motionDesign/papirprinsessen/*.mp4
+
+#Home
 !portfolio-assets/home/thumbnails/*.mp4
