@@ -1483,40 +1483,41 @@
           <p class="clip-grid-label">Photographs from Roskilde Festival</p>
           <div class="gif-strip" style="grid-template-columns: repeat(3, 1fr);">
             <div class="clip-card">
+              <img src="portfolio-assets/musicVisuals/kingtommi/images/01_setup_01.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
+            </div>
+            <div class="clip-card">
               <video autoplay loop muted playsinline style="width:100%;display:block;">
-                <source src="portfolio-assets/musicVisuals/kingtommi/images/knoglerDeVisner_01.mp4" type="video/mp4">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/02_knoglerDeVisner_02.mp4" type="video/mp4">
               </video>
             </div>
             <div class="clip-card">
               <video autoplay loop muted playsinline style="width:100%;display:block;">
-                <source src="portfolio-assets/musicVisuals/kingtommi/images/knoglerDeVisner_02.mp4" type="video/mp4">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/03_Merlins.mp4" type="video/mp4">
               </video>
             </div>
-            <div class="clip-card">
+            <div class="clip-card roskilde-hidden" style="display:none;">
               <video autoplay loop muted playsinline style="width:100%;display:block;">
-                <source src="portfolio-assets/musicVisuals/kingtommi/images/Merlins.mp4" type="video/mp4">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/04_hvordanJegHarDet.mp4" type="video/mp4">
               </video>
             </div>
-            <div class="clip-card">
-              <video autoplay loop muted playsinline style="width:100%;display:block;">
-                <source src="portfolio-assets/musicVisuals/kingtommi/images/hvordanJegHarDet.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="clip-card">
-              <img src="portfolio-assets/musicVisuals/kingtommi/images/setup_01.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
-            </div>
-            <div class="clip-card">
-              <img src="portfolio-assets/musicVisuals/kingtommi/images/setup_02.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
+            <div class="clip-card roskilde-hidden" style="display:none;">
+              <img src="portfolio-assets/musicVisuals/kingtommi/images/05_setup_02.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
             </div>
           </div>
+          <button class="clip-expand-btn" id="roskilde-expand-btn" onclick="toggleRoskildeClips()">
+            <span id="roskilde-expand-label">Show all</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
       </div>
 
       <div class="project-entry-toa reveal">
         <div class="project-entry reverse">
-          <div class="project-media">
-            <div class="video-local">
-              <video autoplay loop muted playsinline>
+          <div class="project-media" style="background:none;border-radius:0;">
+            <div class="video-local" style="background:none;display:flex;justify-content:center;">
+              <video autoplay loop muted playsinline style="max-height:640px;width:auto;border-radius:12px;">
                 <source src="portfolio-assets/musicVisuals/neonpriest/Forever_Promovideo.mp4" type="video/mp4">
               </video>
             </div>
@@ -1734,9 +1735,9 @@
       </div>
 
       <div class="project-entry reverse reveal">
-        <div class="project-media">
-          <div class="video-local">
-            <video autoplay loop muted playsinline>
+        <div class="project-media" style="background:none;border-radius:0;">
+          <div class="video-local" style="background:none;display:flex;justify-content:center;">
+            <video controls playsinline style="max-height:640px;width:auto;border-radius:12px;" poster="portfolio-assets/motionDesign/minNakke/thumbnail.jpg">
               <source src="portfolio-assets/motionDesign/minNakke/250120 MinNakke Explainer_V03.mp4" type="video/mp4">
             </video>
           </div>
@@ -1760,7 +1761,7 @@
       <div class="project-entry reveal">
         <div class="project-media">
           <div class="video-local">
-            <video autoplay loop muted playsinline>
+            <video controls playsinline poster="portfolio-assets/motionDesign/forberedtFællesskab/thumbnail.jpg">
               <source src="portfolio-assets/motionDesign/forberedtFællesskab/ForberedtFællesskab_Explainer.mp4" type="video/mp4">
             </video>
           </div>
@@ -2284,6 +2285,16 @@
 
     function loadVimeo(el, videoId) {
       el.innerHTML = `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0" allowfullscreen allow="autoplay"></iframe>`;
+    }
+
+    function toggleRoskildeClips() {
+      const btn = document.getElementById('roskilde-expand-btn');
+      const label = document.getElementById('roskilde-expand-label');
+      const hidden = document.querySelectorAll('.roskilde-hidden');
+      const expanded = btn.classList.contains('expanded');
+      hidden.forEach(el => el.style.display = expanded ? 'none' : 'block');
+      btn.classList.toggle('expanded', !expanded);
+      label.textContent = expanded ? 'Show all' : 'Show less';
     }
 
     function toggleKingtommiClips() {
