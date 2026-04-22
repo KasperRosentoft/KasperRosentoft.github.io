@@ -712,6 +712,51 @@
       .gif-strip { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* ── VIDEO FACADE ── */
+    .video-facade {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111;
+    }
+
+    .facade-thumb {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 300ms var(--ease-out-cubic);
+    }
+
+    .video-facade:hover .facade-thumb { transform: scale(1.03); }
+
+    .facade-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .facade-play svg {
+      width: 56px; height: 56px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+      padding: 16px;
+      transition: background 150ms ease, transform 150ms ease;
+      box-sizing: border-box;
+    }
+
+    .video-facade:hover .facade-play svg {
+      background: rgba(0,0,0,0.85);
+      transform: scale(1.08);
+    }
+
+    .video-facade iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
     /* ── TOA CONTAINER ── */
     .project-entry-toa {
       padding: 80px 0;
@@ -982,6 +1027,17 @@
 
     .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
+    .about-skills-section {
+      padding: 48px 0 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      margin-top: 48px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .about-skills-section .skills-group { margin-bottom: 0; }
+
     /* ── ABOUT PAGE ── */
     #about { padding-top: 58px; }
 
@@ -1035,6 +1091,7 @@
     .about-socials {
       display: flex; gap: 12px;
       margin-top: 28px; flex-wrap: wrap;
+      padding-bottom: 4px;
     }
 
     .social-link {
@@ -1262,39 +1319,39 @@
           <p>I'm a motion designer with a deep interest in 3D and pushing software to its limits — especially Blender and its geometry nodes, which play a central role in both my personal and client work.</p>
           <p>A lot of my spare time goes into exploring and developing my skills, which traces back to my background in music. The two worlds have merged in my work creating visuals for live performances, where what happens on stage and what happens on screen feed into each other and become something bigger.</p>
           <div class="about-socials">
-            <a class="social-link" href="https://instagram.com/yourhandle" target="_blank">
+            <a class="social-link" href="https://www.instagram.com/kasper_rosentoft/" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
               Instagram
             </a>
-            <a class="social-link" href="https://linkedin.com/in/yourhandle" target="_blank">
+            <a class="social-link" href="https://www.linkedin.com/in/kasper-rosentoft-592252192/" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
           </div>
-
-          <div class="about-skills">
-            <div class="skills-group">
-              <p class="skills-label">Tools</p>
-              <div class="skills-tags">
-                <span class="skill-tag">Blender</span>
-                <span class="skill-tag">After Effects</span>
-                <span class="skill-tag">TouchDesigner</span>
-                <span class="skill-tag">DaVinci Resolve</span>
-                <span class="skill-tag">Figma</span>
-              </div>
-            </div>
-            <div class="skills-group">
-              <p class="skills-label">Currently learning</p>
-              <div class="skills-tags">
-                <span class="skill-tag learning">Houdini</span>
-                <span class="skill-tag learning">Unreal Engine</span>
-                <span class="skill-tag learning">Cavalry</span>
-                <span class="skill-tag learning">Rive</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+
+      <section class="about-skills-section reveal">
+        <div class="skills-group">
+          <p class="skills-label">Tools</p>
+          <div class="skills-tags">
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">After Effects</span>
+            <span class="skill-tag">TouchDesigner</span>
+            <span class="skill-tag">DaVinci Resolve</span>
+            <span class="skill-tag">Figma</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <p class="skills-label">Currently learning</p>
+          <div class="skills-tags">
+            <span class="skill-tag learning">Houdini</span>
+            <span class="skill-tag learning">Unreal Engine</span>
+            <span class="skill-tag learning">Cavalry</span>
+            <span class="skill-tag learning">Rive</span>
+          </div>
+        </div>
+      </section>
 
       <section class="timeline-section reveal" style="padding-left:0;padding-right:0;">
         <p class="timeline-label">Experience & Education</p>
@@ -1327,8 +1384,8 @@
     <footer>
       <span class="footer-name">Kasper Rosentoft</span>
       <ul class="footer-links">
-        <li><a href="https://instagram.com/yourhandle" target="_blank">Instagram</a></li>
-        <li><a href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/kasper_rosentoft/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/kasper-rosentoft-592252192/" target="_blank">LinkedIn</a></li>
       </ul>
     </footer>
   </div>
@@ -1347,8 +1404,13 @@
       <div class="project-entry-toa reveal">
         <div class="project-entry">
           <div class="project-media">
-            <div class="video-embed">
-              <iframe src="https://www.youtube.com/embed/yjcReH8kAps" allowfullscreen allow="autoplay"></iframe>
+            <div class="video-facade" onclick="loadYoutube(this, 'yjcReH8kAps')">
+              <img src="portfolio-assets/musicVisuals/kingtommi/thumbnail.jpg" alt="kingtommi — Merlins" class="facade-thumb">
+              <div class="facade-play">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                  <path d="M1 1L19 12L1 23V1Z" fill="white"/>
+                </svg>
+              </div>
             </div>
           </div>
           <div class="project-info">
@@ -1409,13 +1471,45 @@
             </svg>
           </button>
         </div>
+
+        <div class="toa-clips" style="padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.07); margin-top: 32px;">
+          <p class="clip-grid-label">Photographs from Roskilde Festival</p>
+          <div class="gif-strip" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="clip-card">
+              <video autoplay loop muted playsinline style="width:100%;display:block;">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/knoglerDeVisner_01.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card">
+              <video autoplay loop muted playsinline style="width:100%;display:block;">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/knoglerDeVisner_02.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card">
+              <video autoplay loop muted playsinline style="width:100%;display:block;">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/Merlins.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card">
+              <video autoplay loop muted playsinline style="width:100%;display:block;">
+                <source src="portfolio-assets/musicVisuals/kingtommi/images/hvordanJegHarDet.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="clip-card">
+              <img src="portfolio-assets/musicVisuals/kingtommi/images/setup_01.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
+            </div>
+            <div class="clip-card">
+              <img src="portfolio-assets/musicVisuals/kingtommi/images/setup_02.jpeg" alt="Roskilde setup" style="width:100%;display:block;">
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="project-entry-toa reveal">
         <div class="project-entry reverse">
           <div class="project-media">
             <div class="video-local">
-              <video controls playsinline>
+              <video autoplay loop muted playsinline>
                 <source src="portfolio-assets/musicVisuals/neonpriest/Forever_Promovideo.mp4" type="video/mp4">
               </video>
             </div>
@@ -1696,7 +1790,8 @@
     <div class="page-hero">
       <p class="page-hero-label">Category — 03</p>
       <h1>Video</h1>
-      <p>Cinematography, editing and video production — from brand portraits to tutorial content. Projects where the story lives in the footage itself.</p>
+      <p>As a product of my education as a Film and TV-production technician I am very capable in creating video content from storyboard to shoot to final edit. This is a skill I am very much using in my work as a motion designer and I love projects where I can combine the two.</p>
+      <p style="margin-top:12px;font-size:15px;font-weight:300;color:#666;line-height:1.7;">Below are a combination of school projects and client work.</p>
     </div>
 
     <div class="projects-list">
@@ -1830,9 +1925,9 @@
   </div>
   <div id="experiments" class="page inner-page">
     <div class="page-hero page-hero--no-border">
-      <p class="page-hero-label">Category — 03</p>
+      <p class="page-hero-label">Category — 04</p>
       <h1>Experiments</h1>
-      <p>Personal work, tests, and technical explorations. No briefs, no clients — just curiosity. This is where new techniques get tried and ideas get stress-tested.</p>
+      <p>Personal work, tests, and technical explorations. This is a place for projects with either no clients or small snippets that I want to share.</p>
     </div>
 
     <!-- Filter tabs -->
@@ -2001,6 +2096,10 @@
   </div>
 
   <script>
+    function loadYoutube(el, videoId) {
+      el.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+    }
+
     function toggleKingtommiClips() {
       const btn = document.getElementById('kingtommi-expand-btn');
       const label = document.getElementById('kingtommi-expand-label');
