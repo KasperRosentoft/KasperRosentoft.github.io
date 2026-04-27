@@ -26,6 +26,7 @@ portfolio-assets/**/*.mov
 !portfolio-assets/motionDesign/minNakke/*.mp4
 !portfolio-assets/motionDesign/forberedtFællesskab/*.mp4
 !portfolio-assets/motionDesign/papirprinsessen/*.mp4
+!portfolio-assets/motionDesign/auwau/sequences/*.mp4
 
 #Home
 !portfolio-assets/home/thumbnails/*.mp4
