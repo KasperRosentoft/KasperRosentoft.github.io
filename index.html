@@ -45,7 +45,7 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 60px;
       height: 58px;
@@ -1153,6 +1153,7 @@
       flex-direction: column; justify-content: center; gap: 5px;
       width: 36px; height: 36px;
       background: none; border: none; cursor: pointer; padding: 4px;
+      position: relative; z-index: 400;
     }
 
     .nav-hamburger span {
@@ -1173,15 +1174,23 @@
 
       .nav-links {
         position: fixed;
-        top: 58px; left: 0; right: 0; bottom: 0;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
         background: var(--white);
-        flex-direction: column; gap: 0;
-        padding: 24px 0;
-        display: none; z-index: 99; overflow-y: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        display: none;
+        z-index: 250;
+        overflow-y: auto;
       }
       .nav-links.open { display: flex; }
-      .nav-links li { border-bottom: 1px solid rgba(0,0,0,0.06); }
-      .nav-links a { display: block; padding: 18px 24px; font-size: 20px; opacity: 1; font-weight: 300; }
+      .nav-links li { width: 100%; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .nav-links a { display: block; padding: 20px 24px; font-size: 24px; opacity: 1; font-weight: 300; }
+
+      nav { z-index: 300; }
 
       .hero { grid-template-columns: 1fr !important; padding: 40px 24px 32px !important; gap: 32px !important; }
       .hero-photo { aspect-ratio: 4/3 !important; order: -1; }
@@ -2461,9 +2470,11 @@
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
       const btn = document.querySelector('.nav-hamburger');
+      const isOpen = links.classList.contains('open');
       links.classList.toggle('open');
       btn.classList.toggle('open');
-      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+      btn.setAttribute('aria-label', isOpen ? 'Menu' : 'Close');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
     }
 
     function closeMenu() {
